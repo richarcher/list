@@ -4,6 +4,7 @@ import { cancel } from './lib/speech'
 import ListPicker from './components/ListPicker.vue'
 import Quiz from './components/Quiz.vue'
 import Results from './components/Results.vue'
+import SpeakAsHelper from './components/SpeakAsHelper.vue'
 
 /** Array of { date, title, words } from wordlists.json */
 const wordlists = ref([])
@@ -20,10 +21,14 @@ const groups = computed(() => {
   return [...list].sort((a, b) => (b.date || '').localeCompare(a.date || ''))
 })
 
-const words = computed(() => {
-  const g = groups.value[selectedIndex.value]
-  return g?.words ?? []
-})
+const selectedGroup = computed(() => groups.value[selectedIndex.value] ?? null)
+const words = computed(() => selectedGroup.value?.words ?? [])
+const selectedLang = computed(() => selectedGroup.value?.lang ?? 'en')
+
+/** Lists with lang === 'af' for the parent TTS helper */
+const afrikaansGroups = computed(() =>
+  groups.value.filter((g) => g?.lang === 'af')
+)
 
 function shuffleArray(arr) {
   const a = [...arr]
@@ -34,10 +39,14 @@ function shuffleArray(arr) {
   return a
 }
 
-const currentWord = computed(() => {
+const currentEntry = computed(() => {
   const w = quizWords.value
-  if (!w.length || currentWordIndex.value >= w.length) return ''
+  if (!w.length || currentWordIndex.value >= w.length) return null
   return w[currentWordIndex.value]
+})
+const currentWord = computed(() => {
+  const e = currentEntry.value
+  return e?.word ?? ''
 })
 
 const wrongWords = computed(() => {
@@ -61,16 +70,25 @@ function loadWordlists() {
 function startQuiz() {
   if (!words.value.length) return
   cancel()
-  quizWords.value = shuffleArray(words.value)
+  const g = selectedGroup.value
+  const wordsList = g?.words ?? []
+  const translationsList = g?.translations ?? []
+  const speakAsList = g?.speakAs ?? []
+  const entries = wordsList.map((word, i) => ({
+    word,
+    translation: translationsList[i],
+    speakAs: speakAsList[i] || undefined
+  }))
+  quizWords.value = shuffleArray(entries)
   results.value = []
   currentWordIndex.value = 0
   screen.value = 'quiz'
 }
 
 function onCheck(payload) {
-  const { correct, userSpelling } = payload
+  const { correct, userSpelling, translation } = payload
   const word = currentWord.value
-  results.value.push({ word, correct, userSpelling })
+  results.value.push({ word, correct, userSpelling, translation })
 }
 
 function onNext() {
@@ -82,10 +100,12 @@ function onNext() {
 }
 
 function onSkip() {
+  const entry = currentEntry.value
   results.value.push({
     word: currentWord.value,
     correct: false,
-    userSpelling: undefined
+    userSpelling: undefined,
+    translation: entry?.translation
   })
   onNext()
 }
@@ -113,14 +133,24 @@ onMounted(loadWordlists)
         v-if="screen === 'list-picker'"
         :groups="groups"
         :selected-index="selectedIndex"
+        :show-helper-link="afrikaansGroups.length > 0"
         @select="selectList($event)"
         @start="startQuiz"
+        @open-helper="screen = 'speakAsHelper'"
+      />
+      <SpeakAsHelper
+        v-else-if="screen === 'speakAsHelper'"
+        :groups="groups"
+        @back="screen = 'list-picker'"
       />
       <Quiz
         v-else-if="screen === 'quiz' && currentWord"
         :word="currentWord"
         :word-index="currentWordIndex"
         :total-words="quizWords.length"
+        :lang="selectedLang"
+        :translation="currentEntry?.translation"
+        :speak-as="currentEntry?.speakAs"
         @check="onCheck"
         @skip="onSkip"
         @next="onNext"

@@ -63,6 +63,15 @@ const emit = defineEmits(['key'])
       </button>
       <button
         type="button"
+        class="key key-hyphen"
+        aria-label="Hyphen"
+        :disabled="disabled"
+        @click="emit('key', '-')"
+      >
+        -
+      </button>
+      <button
+        type="button"
         class="key key-space"
         aria-label="Space"
         :disabled="disabled"
@@ -131,5 +140,9 @@ const emit = defineEmits(['key'])
   flex: 0 0 auto;
   max-width: 3.5rem;
   font-size: 1.1rem;
+}
+.key-hyphen {
+  flex: 0 0 auto;
+  max-width: 2.5rem;
 }
 </style>

@@ -7,7 +7,10 @@ import SoftKeyboard from './SoftKeyboard.vue'
 const props = defineProps({
   word: { type: String, required: true },
   wordIndex: { type: Number, required: true },
-  totalWords: { type: Number, required: true }
+  totalWords: { type: Number, required: true },
+  lang: { type: String, default: 'en' },
+  translation: { type: String, default: undefined },
+  speakAs: { type: String, default: undefined }
 })
 const emit = defineEmits(['check', 'skip', 'next'])
 
@@ -18,7 +21,8 @@ const showFeedback = ref(false)
 
 function playWord() {
   cancel()
-  speak(props.word, { rate: 0.85 })
+  const textToSpeak = props.speakAs ?? props.word
+  speak(textToSpeak, { lang: 'en', rate: 0.85 })
 }
 
 watch(
@@ -46,7 +50,7 @@ function submit() {
   } else {
     playIncorrect()
   }
-  emit('check', { correct, userSpelling: raw || undefined })
+  emit('check', { correct, userSpelling: raw || undefined, translation: props.translation })
 }
 
 function nextWord() {
@@ -67,7 +71,7 @@ function onKeydown(e) {
     input.value = input.value.slice(0, -1)
     return
   }
-  if (e.key.length === 1 && /[a-z ]/i.test(e.key)) {
+  if (e.key.length === 1 && /[a-z \-]/i.test(e.key)) {
     e.preventDefault()
     if (!showFeedback.value) input.value += e.key.toLowerCase()
   }

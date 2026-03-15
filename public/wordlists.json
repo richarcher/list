@@ -1,4 +1,18 @@
 [
-  { "date": "2026-03-01", "title": "Week 7", "words": ["excellent", "excited", "yesterday", "sometimes", "sincerely", "a lot", "restaurant", "opposite", "lately", "hungry"] },
-  { "date": "2026-03-08", "title": "Week 8", "words": ["anxiety", "nervous", "possible", "people", "quiet", "probably", "apologise", "mountain", "behaviour", "colour"] }
+  { "date": "2026-03-01", "title": "Week 7", "lang": "en", 
+    "words": ["excellent", "excited", "yesterday", "sometimes", "sincerely", "a lot", "restaurant", "opposite", "lately", "hungry"]
+  },
+  { "date": "2026-03-01", "title": "Week 7 (Afrikaans)", "lang": "af", 
+    "words": ["voeg", "roer", "meng", "strooi", "sit", "skink", "sny", "bak", "draai", "klits"],
+    "translations": ["add", "stir", "mix", "sprinkle", "put", "pour", "cut", "bake", "turn", "beat"],
+    "speakAs": ["foog","rooer","meng","stroy","sit","skink","snay","buck","dry","klits"]
+  },
+  { "date": "2026-03-08", "title": "Week 8", "lang": "en",
+    "words": ["anxiety", "nervous", "possible", "people", "quiet", "probably", "apologise", "mountain", "behaviour", "colour"]
+  },
+  { "date": "2026-03-08", "title": "Week 8 (Afrikaans)", "lang": "af", 
+    "words": ["plakkaat", "kontak", "adres", "e-posadres", "kleuter", "gratis", "kleuterskool", "boodskap", "inligting", "beantwoord"],
+    "translations": ["poster", "contact", "address", "email address", "toddler", "free", "pre-primary school", "message", "information", "answer"],
+    "speakAs": ["pluck-art","kontak","ah-dress","e-posah-dress","kloyter","grahTis","kloyterSkoohl","boadSkap","in-ligsh-ting","beeAhntVordt"]
+  }
 ]

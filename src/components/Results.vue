@@ -53,7 +53,12 @@ onMounted(() => {
                 <span v-if="seg.type === 'same'" class="diff-same">{{ seg.char }}</span>
                 <span v-else-if="seg.type === 'add'" class="diff-missing">{{ seg.char || '·' }}</span>
               </template>
+              <span v-if="item.translation" class="translation-inline"> ({{ item.translation }})</span>
             </span>
+          </div>
+          <div v-if="item.translation" class="wrong-row translation-row">
+            <span class="wrong-label">In English:</span>
+            <span class="translation-text">{{ item.translation }}</span>
           </div>
         </li>
       </ul>
@@ -156,6 +161,18 @@ h1 {
 .diff-missing {
   color: #15803d;
   font-weight: 600;
+}
+.translation-inline {
+  color: var(--text, #6b6375);
+  font-weight: normal;
+  font-family: var(--sans, system-ui, sans-serif);
+}
+.translation-row {
+  margin-top: 0.15rem;
+}
+.translation-text {
+  font-size: 0.95rem;
+  color: var(--text-h, #08060d);
 }
 .actions {
   display: flex;
