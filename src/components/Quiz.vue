@@ -2,6 +2,7 @@
 import { ref, watch, nextTick } from 'vue'
 import { speak, cancel } from '../lib/speech'
 import { playCorrect, playIncorrect } from '../lib/sounds'
+import SoftKeyboard from './SoftKeyboard.vue'
 
 const props = defineProps({
   word: { type: String, required: true },
@@ -57,7 +58,28 @@ function skip() {
 }
 
 function onKeydown(e) {
-  if (e.key === 'Enter') submit()
+  if (e.key === 'Enter') {
+    submit()
+    return
+  }
+  if (e.key === 'Backspace') {
+    e.preventDefault()
+    input.value = input.value.slice(0, -1)
+    return
+  }
+  if (e.key.length === 1 && /[a-z ]/i.test(e.key)) {
+    e.preventDefault()
+    if (!showFeedback.value) input.value += e.key.toLowerCase()
+  }
+}
+
+function onSoftKey(key) {
+  if (showFeedback.value) return
+  if (key === 'backspace') {
+    input.value = input.value.slice(0, -1)
+  } else {
+    input.value += key
+  }
 }
 </script>
 
@@ -79,15 +101,19 @@ function onKeydown(e) {
         ref="inputEl"
         v-model="input"
         type="text"
-        autocomplete="one-time-code"
+        readonly
+        inputmode="none"
+        autocomplete="off"
         autocapitalize="off"
         spellcheck="false"
         autocorrect="off"
         :disabled="showFeedback"
         placeholder="Type the word..."
         class="spelling-input"
+        aria-label="Your spelling (use the keyboard below)"
         @keydown="onKeydown"
       />
+      <SoftKeyboard :disabled="showFeedback" @key="onSoftKey" />
       <div class="actions">
         <button type="button" class="btn btn-secondary" @click="skip" :disabled="showFeedback">
           Skip
