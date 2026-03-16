@@ -17,5 +17,10 @@
   },
   { "date": "2026-03-16", "title": "Week 9", "lang": "en",
     "words": ["piece", "height", "breathe", "interesting", "really", "would", "until", "always", "except", "promise"]
+  },
+  { "date": "2026-03-16", "title": "Week 9 (Afrikaans)", "lang": "af", 
+    "words": ["invitation", "feast", "party", "fun", "date", "time", "birthday", "simple", "message", "celebrate"],
+    "translations": ["uitnodiging", "fees", "partytjie", "pret", "datum", "tyd", "verjaarsdag", "eenvoudig", "boodskap", "vier"],
+    "speakAs": [null, null, null, null, null, null, null, null, null, null]
   }
 ]
