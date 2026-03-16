@@ -55,23 +55,23 @@ const copyFeedback = ref(false)
 </script>
 
 <template>
-  <div class="speak-as-helper">
-    <button type="button" class="btn-back" @click="$emit('back')">
+  <div class="w-full max-w-[36rem] mx-auto py-8 px-4 text-left">
+    <button type="button" class="btn btn-ghost btn-sm mb-4 link link-hover text-base-content/70" @click="$emit('back')">
       Back to quiz
     </button>
-    <h1>Parent: TTS helper</h1>
-    <p v-if="!afrikaansGroups.length" class="intro">
-      No Afrikaans lists in the word list. Add a list with <code>lang: "af"</code> to use this helper.
+    <h1 class="m-0 mb-2 text-2xl text-base-content">Parent: TTS helper</h1>
+    <p v-if="!afrikaansGroups.length" class="m-0 mb-4 text-base text-base-content/70 leading-relaxed">
+      No Afrikaans lists in the word list. Add a list with <code class="font-mono text-sm px-1 py-0.5 bg-base-200 rounded">lang: "af"</code> to use this helper.
     </p>
     <template v-else>
-      <p class="intro">
+      <p class="m-0 mb-4 text-base text-base-content/70 leading-relaxed">
         Use this to find text that sounds right for each word. Type in the &quot;Speak as&quot; box and press Play. When happy, copy the list and send it to update the word list.
       </p>
       <label for="helper-list-select" class="sr-only">Choose list</label>
       <select
         id="helper-list-select"
         v-model.number="selectedAfIndex"
-        class="list-select"
+        class="select select-bordered mb-4 min-w-[14rem]"
       >
         <option
           v-for="(g, i) in afrikaansGroups"
@@ -81,8 +81,8 @@ const copyFeedback = ref(false)
           {{ g.title }}
         </option>
       </select>
-      <div v-if="selectedList" class="table-wrap">
-        <table class="word-table">
+      <div v-if="selectedList" class="overflow-x-auto mb-4">
+        <table class="table table-zebra">
           <thead>
             <tr>
               <th>Word</th>
@@ -93,20 +93,20 @@ const copyFeedback = ref(false)
           </thead>
           <tbody>
             <tr v-for="(word, i) in selectedList.words" :key="i">
-              <td class="col-word">{{ word }}</td>
-              <td class="col-translation">{{ selectedList.translations?.[i] ?? '—' }}</td>
-              <td class="col-input">
+              <td class="font-medium">{{ word }}</td>
+              <td class="text-base-content/70">{{ selectedList.translations?.[i] ?? '—' }}</td>
+              <td>
                 <input
                   v-model="speakAsInputs[i]"
                   type="text"
-                  class="speak-as-input"
+                  class="input input-bordered input-sm w-full min-w-[8rem]"
                   :aria-label="`Speak as for ${word}`"
                 />
               </td>
-              <td class="col-play">
+              <td>
                 <button
                   type="button"
-                  class="btn-play"
+                  class="btn btn-neutral btn-sm whitespace-nowrap"
                   aria-label="Play"
                   @click="playRow(speakAsInputs[i])"
                 >
@@ -117,7 +117,7 @@ const copyFeedback = ref(false)
           </tbody>
         </table>
       </div>
-      <div class="copy-row">
+      <div class="mb-2">
         <button
           type="button"
           class="btn btn-primary"
@@ -127,159 +127,7 @@ const copyFeedback = ref(false)
           {{ copyFeedback ? 'Copied!' : 'Copy speakAs array' }}
         </button>
       </div>
-      <p class="copy-hint">Copy this and send to update the list.</p>
+      <p class="m-0 text-sm text-base-content/70">Copy this and send to update the list.</p>
     </template>
   </div>
 </template>
-
-<style scoped>
-.speak-as-helper {
-  width: 100%;
-  max-width: 36rem;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  text-align: left;
-}
-.btn-back {
-  margin-bottom: 1rem;
-  background: none;
-  border: none;
-  padding: 0;
-  font-size: 0.95rem;
-  color: var(--text, #6b6375);
-  text-decoration: underline;
-  cursor: pointer;
-}
-.btn-back:hover {
-  color: var(--text-h, #08060d);
-}
-.btn-back:focus-visible {
-  outline: 2px solid var(--accent, #aa3bff);
-  outline-offset: 2px;
-}
-h1 {
-  margin: 0 0 0.5rem;
-  font-size: 1.5rem;
-  color: var(--text-h, #08060d);
-}
-.intro {
-  margin: 0 0 1rem;
-  font-size: 0.95rem;
-  color: var(--text, #6b6375);
-  line-height: 1.4;
-}
-.intro code {
-  font-family: var(--mono, ui-monospace, monospace);
-  font-size: 0.9em;
-  padding: 0.1em 0.3em;
-  background: var(--code-bg, #f4f3ec);
-  border-radius: 3px;
-}
-.list-select {
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border: 2px solid var(--border, #e5e4e7);
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  min-width: 14rem;
-  background: var(--bg, #fff);
-  color: var(--text-h, #08060d);
-}
-.list-select:focus-visible {
-  outline: 2px solid var(--accent, #aa3bff);
-  outline-offset: 2px;
-}
-.table-wrap {
-  overflow-x: auto;
-  margin-bottom: 1rem;
-}
-.word-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.95rem;
-}
-.word-table th,
-.word-table td {
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--border, #e5e4e7);
-  vertical-align: middle;
-}
-.word-table th {
-  text-align: left;
-  font-weight: 600;
-  color: var(--text-h, #08060d);
-}
-.col-word {
-  font-weight: 500;
-}
-.col-translation {
-  color: var(--text, #6b6375);
-}
-.speak-as-input {
-  width: 100%;
-  min-width: 8rem;
-  font-size: 0.95rem;
-  padding: 0.35rem 0.5rem;
-  border: 1px solid var(--border, #e5e4e7);
-  border-radius: 4px;
-}
-.speak-as-input:focus {
-  border-color: var(--accent, #aa3bff);
-  outline: none;
-}
-.btn-play {
-  font-size: 0.85rem;
-  padding: 0.35rem 0.6rem;
-  background: var(--code-bg, #f4f3ec);
-  border: 1px solid var(--border, #e5e4e7);
-  border-radius: 4px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.btn-play:hover {
-  background: var(--border, #e5e4e7);
-}
-.btn-play:focus-visible {
-  outline: 2px solid var(--accent, #aa3bff);
-  outline-offset: 2px;
-}
-.copy-row {
-  margin-bottom: 0.5rem;
-}
-.btn {
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-.btn:focus-visible {
-  outline: 2px solid var(--accent, #aa3bff);
-  outline-offset: 2px;
-}
-.btn-primary {
-  background: var(--accent, #aa3bff);
-  color: #fff;
-  border-color: var(--accent, #aa3bff);
-}
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-.copy-hint {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--text, #6b6375);
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-</style>

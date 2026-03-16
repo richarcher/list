@@ -127,8 +127,8 @@ onMounted(loadWordlists)
 </script>
 
 <template>
-  <div id="app" lang="en-ZA">
-    <main class="main">
+  <div id="app" lang="en-ZA" class="min-h-screen flex flex-col">
+    <main class="flex-1 flex flex-col items-center justify-center p-4">
       <ListPicker
         v-if="screen === 'list-picker'"
         :groups="groups"
@@ -166,19 +166,3 @@ onMounted(loadWordlists)
     </main>
   </div>
 </template>
-
-<style scoped>
-#app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
-</style>
