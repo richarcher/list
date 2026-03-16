@@ -24,47 +24,51 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="results">
-    <h1>Well done!</h1>
-    <p v-if="total > 0 && score === total" class="full-marks" role="status">
+  <div class="flex flex-col items-center gap-6 p-8 max-w-[32rem] mx-auto">
+    <h1 class="m-0 text-3xl text-base-content">Well done!</h1>
+    <p v-if="total > 0 && score === total" class="m-0 text-2xl font-semibold text-success" role="status">
       Full marks!
     </p>
-    <p class="score" aria-live="polite">
-      You got <strong>{{ score }}</strong> out of <strong>{{ total }}</strong> correct.
+    <p class="m-0 text-xl text-base-content/70" aria-live="polite">
+      You got <strong class="text-base-content">{{ score }}</strong> out of <strong class="text-base-content">{{ total }}</strong> correct.
     </p>
-    <section v-if="wrongWords.length" class="wrong-section" aria-labelledby="wrong-heading">
-      <h2 id="wrong-heading">Words to practise</h2>
-      <p class="hint">Here’s the difference between what you wrote and the correct spelling.</p>
-      <ul class="wrong-list">
-        <li v-for="(item, i) in wrongWords" :key="i" class="wrong-item">
-          <div class="wrong-row">
-            <span class="wrong-label">You wrote:</span>
-            <span class="wrong-spelling">
+    <section v-if="wrongWords.length" class="w-full text-left" aria-labelledby="wrong-heading">
+      <h2 id="wrong-heading" class="m-0 mb-2 text-xl text-base-content">Words to practise</h2>
+      <p class="m-0 mb-4 text-sm text-base-content/70">Here’s the difference between what you wrote and the correct spelling.</p>
+      <ul class="list-none p-0 m-0">
+        <li
+          v-for="(item, i) in wrongWords"
+          :key="i"
+          class="py-3 border-b border-base-300 last:border-b-0"
+        >
+          <div class="flex gap-2 items-baseline mb-1">
+            <span class="flex-shrink-0 text-sm text-base-content/70 min-w-[5.5rem]">You wrote:</span>
+            <span class="font-mono text-base tracking-wide">
               <template v-for="(seg, j) in getDiff(item.word, item.userSpelling).userSegments" :key="j">
                 <span v-if="seg.type === 'same'" class="diff-same">{{ seg.char }}</span>
                 <span v-else-if="seg.type === 'remove'" class="diff-wrong">{{ seg.char || '·' }}</span>
               </template>
             </span>
           </div>
-          <div class="wrong-row">
-            <span class="wrong-label">Correct:</span>
-            <span class="correct-spelling">
+          <div class="flex gap-2 items-baseline mb-1">
+            <span class="flex-shrink-0 text-sm text-base-content/70 min-w-[5.5rem]">Correct:</span>
+            <span class="font-mono text-base tracking-wide">
               <template v-for="(seg, j) in getDiff(item.word, item.userSpelling).correctSegments" :key="j">
                 <span v-if="seg.type === 'same'" class="diff-same">{{ seg.char }}</span>
                 <span v-else-if="seg.type === 'add'" class="diff-missing">{{ seg.char || '·' }}</span>
               </template>
-              <span v-if="item.translation" class="translation-inline"> ({{ item.translation }})</span>
+              <span v-if="item.translation" class="translation-inline text-base-content/70 font-sans font-normal"> ({{ item.translation }})</span>
             </span>
           </div>
-          <div v-if="item.translation" class="wrong-row translation-row">
-            <span class="wrong-label">In English:</span>
-            <span class="translation-text">{{ item.translation }}</span>
+          <div v-if="item.translation" class="flex gap-2 items-baseline mt-0.5">
+            <span class="flex-shrink-0 text-sm text-base-content/70 min-w-[5.5rem]">In English:</span>
+            <span class="text-sm text-base-content">{{ item.translation }}</span>
           </div>
         </li>
       </ul>
     </section>
-    <div class="actions">
-      <button type="button" class="btn btn-secondary" @click="$emit('tryAgain')">
+    <div class="flex gap-3 flex-wrap justify-center">
+      <button type="button" class="btn btn-neutral" @click="$emit('tryAgain')">
         Try again
       </button>
       <button type="button" class="btn btn-primary" @click="$emit('pickAnotherDate')">
@@ -75,130 +79,14 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.results {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 2rem;
-  max-width: 32rem;
-  margin: 0 auto;
-}
-h1 {
-  margin: 0;
-  font-size: 2rem;
-  color: var(--text-h, #08060d);
-}
-.full-marks {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #15803d;
-}
-.score {
-  margin: 0;
-  font-size: 1.25rem;
-  color: var(--text, #6b6375);
-}
-.score strong {
-  color: var(--text-h, #08060d);
-}
-.wrong-section {
-  width: 100%;
-  text-align: left;
-}
-.wrong-section h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
-  color: var(--text-h, #08060d);
-}
-.wrong-section .hint {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: var(--text, #6b6375);
-}
-.wrong-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.wrong-item {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border, #e5e4e7);
-}
-.wrong-item:last-child {
-  border-bottom: none;
-}
-.wrong-row {
-  display: flex;
-  gap: 0.5rem;
-  align-items: baseline;
-  margin-bottom: 0.25rem;
-}
-.wrong-row:last-child {
-  margin-bottom: 0;
-}
-.wrong-label {
-  flex-shrink: 0;
-  font-size: 0.9rem;
-  color: var(--text, #6b6375);
-  min-width: 5.5rem;
-}
-.wrong-spelling,
-.correct-spelling {
-  font-family: var(--mono, ui-monospace, Consolas, monospace);
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-}
 .diff-same {
-  color: var(--text-h, #08060d);
+  @apply text-base-content;
 }
 .diff-wrong {
-  color: #b91c1c;
-  text-decoration: underline;
+  @apply text-error underline;
   text-decoration-style: wavy;
 }
 .diff-missing {
-  color: #15803d;
-  font-weight: 600;
-}
-.translation-inline {
-  color: var(--text, #6b6375);
-  font-weight: normal;
-  font-family: var(--sans, system-ui, sans-serif);
-}
-.translation-row {
-  margin-top: 0.15rem;
-}
-.translation-text {
-  font-size: 0.95rem;
-  color: var(--text-h, #08060d);
-}
-.actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.btn {
-  font-size: 1rem;
-  padding: 0.6rem 1.25rem;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-.btn:focus-visible {
-  outline: 2px solid var(--accent, #aa3bff);
-  outline-offset: 2px;
-}
-.btn-primary {
-  background: var(--accent, #aa3bff);
-  color: #fff;
-  border-color: var(--accent, #aa3bff);
-}
-.btn-secondary {
-  background: var(--code-bg, #f4f3ec);
-  color: var(--text-h, #08060d);
-  border-color: var(--border, #e5e4e7);
+  @apply text-success font-semibold;
 }
 </style>
