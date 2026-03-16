@@ -14,5 +14,8 @@
     "words": ["plakkaat", "kontak", "adres", "e-posadres", "kleuter", "gratis", "kleuterskool", "boodskap", "inligting", "beantwoord"],
     "translations": ["poster", "contact", "address", "email address", "toddler", "free", "pre-primary school", "message", "information", "answer"],
     "speakAs": ["pluck-aaht","kohntak","ah-dress","e-posah-dress","kleewter","graahTis","kleewterSkoohl","booadSkap","in-ligc-ting","b-Ahnt-Vooardt"]
+  },
+  { "date": "2026-03-16", "title": "Week 9", "lang": "en",
+    "words": ["piece", "height", "breathe", "interesting", "really", "would", "until", "always", "except", "promise"]
   }
 ]
