@@ -40,7 +40,7 @@ jobs:
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "index.html"
           aws s3 cp dist/index.html s3://${{ secrets.S3_BUCKET }}/index.html \
-            --cache-control "public, max-age=0, must-revalidate"
+            --cache-control "no-store"
 
       - name: Invalidate CloudFront cache
         run: |
