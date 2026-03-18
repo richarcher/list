@@ -57,10 +57,18 @@ onMounted(() => {
                 <span v-if="seg.type === 'same'" class="diff-same">{{ seg.char }}</span>
                 <span v-else-if="seg.type === 'add'" class="diff-missing">{{ seg.char || '·' }}</span>
               </template>
-              <span v-if="item.translation" class="translation-inline text-base-content/70 font-sans font-normal"> ({{ item.translation }})</span>
+              <span
+                v-if="item.translation && item.translation !== item.word"
+                class="translation-inline text-base-content/70 font-sans font-normal"
+              >
+                ({{ item.translation }})
+              </span>
             </span>
           </div>
-          <div v-if="item.translation" class="flex gap-2 items-baseline mt-0.5">
+          <div
+            v-if="item.translation && item.translation !== item.word"
+            class="flex gap-2 items-baseline mt-0.5"
+          >
             <span class="flex-shrink-0 text-sm text-base-content/70 min-w-[5.5rem]">In English:</span>
             <span class="text-sm text-base-content">{{ item.translation }}</span>
           </div>

@@ -44,7 +44,7 @@ Lists live in **`public/wordlists.json`**: an array of list objects. Lists are s
 
 ### Afrikaans list
 
-Add **translations** (English meanings) and **speakAs** (phonetic spellings for TTS so an English voice says them clearly):
+Add **translations** (English meanings). For `lang: "af"` lists, the app will **speak the English translation** and the learner must **spell the Afrikaans word**:
 
 ```json
 {
@@ -52,29 +52,15 @@ Add **translations** (English meanings) and **speakAs** (phonetic spellings for 
   "title": "Week 8 (Afrikaans)",
   "lang": "af",
   "words": ["plakkaat", "kontak", ...],
-  "translations": ["poster", "contact", ...],
-  "speakAs": ["pluck-art", "kon-tuck", ...]
+  "translations": ["poster", "contact", ...]
 }
 ```
 
 - **translations** – One English translation per word (shown in results and in the app).
-- **speakAs** – Optional. One string per word: “sounds like” spelling for the English TTS voice. Omit or use `null` for a word to fall back to the real word.
 
 Words can include a hyphen (e.g. `e-posadres`); the on-screen keyboard has a hyphen key.
 
----
 
-## Parent TTS helper (Afrikaans)
-
-For Afrikaans lists, the app has a **Parent: TTS helper** link on the list-picker screen. It opens a view where you can:
-
-- Pick an Afrikaans list
-- Edit the “Speak as” text for each word and **Play** to hear the English TTS
-- When it sounds right, **Copy speakAs array** and paste it into `public/wordlists.json` as the `speakAs` array for that list
-
-Use this to tune pronunciation when adding new Afrikaans words.
-
----
 
 ## Deployment
 
@@ -88,5 +74,5 @@ Setup (S3, CloudFront, DNS, GitHub secrets, IAM) is described in **`docs/DEPLOYM
 ## Stack
 
 - **Vite** + **Vue 3**
-- **Web Speech API** for text-to-speech (English voice; Afrikaans uses `speakAs` for pronunciation)
+- **Web Speech API** for text-to-speech (English prompt; Afrikaans lists are spelled in Afrikaans after listening to the English `translations`)
 - **Static hosting:** S3 + CloudFront (HTTPS at list.richarcher.co.za)

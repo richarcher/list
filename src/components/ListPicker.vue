@@ -1,10 +1,9 @@
 <script setup>
 defineProps({
   groups: { type: Array, required: true },
-  selectedIndex: { type: Number, default: 0 },
-  showHelperLink: { type: Boolean, default: false }
+  selectedIndex: { type: Number, default: 0 }
 })
-defineEmits(['select', 'start', 'openHelper'])
+defineEmits(['select', 'start'])
 </script>
 
 <template>
@@ -36,10 +35,5 @@ defineEmits(['select', 'start', 'openHelper'])
     >
       Start quiz
     </button>
-    <p v-if="showHelperLink" class="mt-4 mb-0">
-      <button type="button" class="btn btn-ghost btn-sm link link-hover text-base-content/70" @click="$emit('openHelper')">
-        Parent: TTS helper
-      </button>
-    </p>
   </div>
 </template>

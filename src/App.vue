@@ -4,7 +4,6 @@ import { cancel } from './lib/speech'
 import ListPicker from './components/ListPicker.vue'
 import Quiz from './components/Quiz.vue'
 import Results from './components/Results.vue'
-import SpeakAsHelper from './components/SpeakAsHelper.vue'
 
 /** Array of { date, title, words } from wordlists.json */
 const wordlists = ref([])
@@ -24,11 +23,6 @@ const groups = computed(() => {
 const selectedGroup = computed(() => groups.value[selectedIndex.value] ?? null)
 const words = computed(() => selectedGroup.value?.words ?? [])
 const selectedLang = computed(() => selectedGroup.value?.lang ?? 'en')
-
-/** Lists with lang === 'af' for the parent TTS helper */
-const afrikaansGroups = computed(() =>
-  groups.value.filter((g) => g?.lang === 'af')
-)
 
 function shuffleArray(arr) {
   const a = [...arr]
@@ -73,11 +67,9 @@ function startQuiz() {
   const g = selectedGroup.value
   const wordsList = g?.words ?? []
   const translationsList = g?.translations ?? []
-  const speakAsList = g?.speakAs ?? []
   const entries = wordsList.map((word, i) => ({
     word,
-    translation: translationsList[i],
-    speakAs: speakAsList[i] || undefined
+    translation: translationsList[i]
   }))
   quizWords.value = shuffleArray(entries)
   results.value = []
@@ -86,9 +78,8 @@ function startQuiz() {
 }
 
 function onCheck(payload) {
-  const { correct, userSpelling, translation } = payload
-  const word = currentWord.value
-  results.value.push({ word, correct, userSpelling, translation })
+  const { correct, userSpelling, translation, expectedWord } = payload
+  results.value.push({ word: expectedWord ?? currentWord.value, correct, userSpelling, translation })
 }
 
 function onNext() {
@@ -101,8 +92,9 @@ function onNext() {
 
 function onSkip() {
   const entry = currentEntry.value
+  const expectedWord = entry?.translation ?? currentWord.value
   results.value.push({
-    word: currentWord.value,
+    word: expectedWord,
     correct: false,
     userSpelling: undefined,
     translation: entry?.translation
@@ -133,15 +125,8 @@ onMounted(loadWordlists)
         v-if="screen === 'list-picker'"
         :groups="groups"
         :selected-index="selectedIndex"
-        :show-helper-link="afrikaansGroups.length > 0"
         @select="selectList($event)"
         @start="startQuiz"
-        @open-helper="screen = 'speakAsHelper'"
-      />
-      <SpeakAsHelper
-        v-else-if="screen === 'speakAsHelper'"
-        :groups="groups"
-        @back="screen = 'list-picker'"
       />
       <Quiz
         v-else-if="screen === 'quiz' && currentWord"
@@ -150,7 +135,6 @@ onMounted(loadWordlists)
         :total-words="quizWords.length"
         :lang="selectedLang"
         :translation="currentEntry?.translation"
-        :speak-as="currentEntry?.speakAs"
         @check="onCheck"
         @skip="onSkip"
         @next="onNext"
