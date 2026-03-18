@@ -78,9 +78,8 @@ function startQuiz() {
 }
 
 function onCheck(payload) {
-  const { correct, userSpelling, translation } = payload
-  const word = currentWord.value
-  results.value.push({ word, correct, userSpelling, translation })
+  const { correct, userSpelling, translation, expectedWord } = payload
+  results.value.push({ word: expectedWord ?? currentWord.value, correct, userSpelling, translation })
 }
 
 function onNext() {
@@ -93,8 +92,9 @@ function onNext() {
 
 function onSkip() {
   const entry = currentEntry.value
+  const expectedWord = entry?.translation ?? currentWord.value
   results.value.push({
-    word: currentWord.value,
+    word: expectedWord,
     correct: false,
     userSpelling: undefined,
     translation: entry?.translation

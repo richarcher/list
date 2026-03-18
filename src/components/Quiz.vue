@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick } from 'vue'
+import { ref, watch, nextTick, computed } from 'vue'
 import { speak, cancel } from '../lib/speech'
 import { playCorrect, playIncorrect } from '../lib/sounds'
 import SoftKeyboard from './SoftKeyboard.vue'
@@ -18,10 +18,11 @@ const inputEl = ref(null)
 const feedback = ref(null) // 'correct' | 'incorrect' | null
 const showFeedback = ref(false)
 
+const expectedWord = computed(() => props.translation ?? props.word)
+
 function playWord() {
   cancel()
-  const textToSpeak = props.lang === 'af' && props.translation ? props.translation : props.word
-  // Always speak the English prompt.
+  const textToSpeak = props.word
   speak(textToSpeak, { lang: 'en', rate: 0.85 })
 }
 
@@ -42,7 +43,8 @@ watch(
 function submit() {
   const raw = input.value.trim()
   const normalized = raw.toLowerCase()
-  const correct = props.word.toLowerCase() === normalized
+  const expected = props.translation ?? props.word
+  const correct = expected.toLowerCase() === normalized
   feedback.value = correct ? 'correct' : 'incorrect'
   showFeedback.value = true
   if (correct) {
@@ -50,7 +52,12 @@ function submit() {
   } else {
     playIncorrect()
   }
-  emit('check', { correct, userSpelling: raw || undefined, translation: props.translation })
+  emit('check', {
+    correct,
+    userSpelling: raw || undefined,
+    translation: props.translation,
+    expectedWord: expected
+  })
 }
 
 function nextWord() {
@@ -93,7 +100,7 @@ function onSoftKey(key) {
       Word {{ wordIndex + 1 }} of {{ totalWords }}
     </p>
     <p class="m-0 text-lg text-base-content">
-      Listen, then spell the word <b>{{ lang === 'af' ? 'in Afrikaans' : 'in English' }}</b>
+      Listen, then spell the word <b>in English</b>
     </p>
     <div class="w-full">
       <button type="button" class="btn btn-neutral" @click="playWord" aria-label="Play word again">
@@ -146,7 +153,7 @@ function onSoftKey(key) {
       role="status"
     >
       <span v-if="feedback === 'correct'">Correct!</span>
-      <span v-else>Not quite – the word was <strong>{{ word }}</strong>.</span>
+      <span v-else>Not quite – the word was <strong>{{ expectedWord }}</strong>.</span>
       <button type="button" class="btn btn-primary btn-block mt-3" @click="nextWord">
         {{ wordIndex + 1 >= totalWords ? 'See results' : 'Next word' }}
       </button>
