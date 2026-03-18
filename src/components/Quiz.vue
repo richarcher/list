@@ -10,7 +10,6 @@ const props = defineProps({
   totalWords: { type: Number, required: true },
   lang: { type: String, default: 'en' },
   translation: { type: String, default: undefined },
-  speakAs: { type: String, default: undefined }
 })
 const emit = defineEmits(['check', 'skip', 'next'])
 
@@ -21,7 +20,8 @@ const showFeedback = ref(false)
 
 function playWord() {
   cancel()
-  const textToSpeak = props.speakAs ?? props.word
+  const textToSpeak = props.lang === 'af' && props.translation ? props.translation : props.word
+  // Always speak the English prompt.
   speak(textToSpeak, { lang: 'en', rate: 0.85 })
 }
 
