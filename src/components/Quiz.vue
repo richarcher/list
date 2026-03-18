@@ -92,7 +92,9 @@ function onSoftKey(key) {
     <p class="m-0 text-sm text-base-content/70" aria-live="polite">
       Word {{ wordIndex + 1 }} of {{ totalWords }}
     </p>
-    <p class="m-0 text-lg text-base-content">Listen, then spell the word.</p>
+    <p class="m-0 text-lg text-base-content">
+      Listen, then spell the word <b>{{ lang === 'af' ? 'in Afrikaans' : 'in English' }}</b>
+    </p>
     <div class="w-full">
       <button type="button" class="btn btn-neutral" @click="playWord" aria-label="Play word again">
         Play word again
