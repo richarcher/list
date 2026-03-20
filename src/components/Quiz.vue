@@ -70,7 +70,8 @@ function skip() {
 
 function onKeydown(e) {
   if (e.key === 'Enter') {
-    submit()
+    if (showFeedback.value) nextWord()
+    else submit()
     return
   }
   if (e.key === 'Backspace') {
@@ -126,7 +127,6 @@ function onSoftKey(key) {
         autocapitalize="off"
         spellcheck="false"
         autocorrect="off"
-        :disabled="showFeedback"
         placeholder="Type the word..."
         class="input input-bordered w-full text-xl box-border"
         :class="{
