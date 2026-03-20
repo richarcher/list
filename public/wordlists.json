@@ -4,16 +4,16 @@
     "title": "Week 7 (English)",
     "lang": "en",
     "words": [
-      "excellent",
-      "excited",
-      "yesterday",
-      "sometimes",
-      "sincerely",
-      "a lot",
-      "restaurant",
-      "opposite",
-      "lately",
-      "hungry"
+      { "speak": "excellent", "spell": "excellent" },
+      { "speak": "excited", "spell": "excited" },
+      { "speak": "yesterday", "spell": "yesterday" },
+      { "speak": "sometimes", "spell": "sometimes" },
+      { "speak": "sincerely", "spell": "sincerely" },
+      { "speak": "a lot", "spell": "a lot" },
+      { "speak": "restaurant", "spell": "restaurant" },
+      { "speak": "opposite", "spell": "opposite" },
+      { "speak": "lately", "spell": "lately" },
+      { "speak": "hungry", "spell": "hungry" }
     ]
   },
   {
@@ -21,34 +21,33 @@
     "title": "Week 7 (Afrikaans)",
     "lang": "af",
     "words": [
-      "voeg",
-      "roer",
-      "meng",
-      "strooi",
-      "sit",
-      "skink",
-      "sny",
-      "bak",
-      "draai",
-      "klits"
-    ],
-    "translations": ["add", "stir", "mix", "sprinkle", "put", "pour", "cut", "bake", "turn", "beat"]
+      { "speak": "add", "spell": "voeg" },
+      { "speak": "stir", "spell": "roer" },
+      { "speak": "mix", "spell": "meng" },
+      { "speak": "sprinkle", "spell": "strooi" },
+      { "speak": "put", "spell": "sit" },
+      { "speak": "pour", "spell": "skink" },
+      { "speak": "cut", "spell": "sny" },
+      { "speak": "bake", "spell": "bak" },
+      { "speak": "turn", "spell": "draai" },
+      { "speak": "beat", "spell": "klits" }
+    ]
   },
   {
     "date": "2026-03-08",
     "title": "Week 8 (English)",
     "lang": "en",
     "words": [
-      "anxiety",
-      "nervous",
-      "possible",
-      "people",
-      "quiet",
-      "probably",
-      "apologise",
-      "mountain",
-      "behaviour",
-      "colour"
+      { "speak": "anxiety", "spell": "anxiety" },
+      { "speak": "nervous", "spell": "nervous" },
+      { "speak": "possible", "spell": "possible" },
+      { "speak": "people", "spell": "people" },
+      { "speak": "quiet", "spell": "quiet" },
+      { "speak": "probably", "spell": "probably" },
+      { "speak": "apologise", "spell": "apologise" },
+      { "speak": "mountain", "spell": "mountain" },
+      { "speak": "behaviour", "spell": "behaviour" },
+      { "speak": "colour", "spell": "colour" }
     ]
   },
   {
@@ -56,28 +55,16 @@
     "title": "Week 8 (Afrikaans)",
     "lang": "af",
     "words": [
-      "plakkaat",
-      "kontak",
-      "adres",
-      "e-posadres",
-      "kleuter",
-      "gratis",
-      "kleuterskool",
-      "boodskap",
-      "inligting",
-      "beantwoord"
-    ],
-    "translations": [
-      "poster",
-      "contact",
-      "address",
-      "email address",
-      "toddler",
-      "free",
-      "pre-primary school",
-      "message",
-      "information",
-      "answer"
+      { "speak": "poster", "spell": "plakkaat" },
+      { "speak": "contact", "spell": "kontak" },
+      { "speak": "address", "spell": "adres" },
+      { "speak": "email address", "spell": "e-posadres" },
+      { "speak": "toddler", "spell": "kleuter" },
+      { "speak": "free", "spell": "gratis" },
+      { "speak": "pre-primary school", "spell": "kleuterskool" },
+      { "speak": "message", "spell": "boodskap" },
+      { "speak": "information", "spell": "inligting" },
+      { "speak": "answer", "spell": "beantwoord" }
     ]
   },
   {
@@ -85,16 +72,16 @@
     "title": "Week 9 (English)",
     "lang": "en",
     "words": [
-      "piece",
-      "height",
-      "breathe",
-      "interesting",
-      "really",
-      "would",
-      "until",
-      "always",
-      "except",
-      "promise"
+      { "speak": "piece", "spell": "piece" },
+      { "speak": "height", "spell": "height" },
+      { "speak": "breathe", "spell": "breathe" },
+      { "speak": "interesting", "spell": "interesting" },
+      { "speak": "really", "spell": "really" },
+      { "speak": "would", "spell": "would" },
+      { "speak": "until", "spell": "until" },
+      { "speak": "always", "spell": "always" },
+      { "speak": "except", "spell": "except" },
+      { "speak": "promise", "spell": "promise" }
     ]
   },
   {
@@ -102,17 +89,16 @@
     "title": "Week 9 (Afrikaans)",
     "lang": "af",
     "words": [
-      "invitation",
-      "feast",
-      "party",
-      "fun",
-      "date",
-      "time",
-      "birthday",
-      "simple",
-      "message",
-      "celebrate"
-    ],
-    "translations": ["uitnodiging", "fees", "partytjie", "pret", "datum", "tyd", "verjaarsdag", "eenvoudig", "boodskap", "vier"]
+      { "speak": "invitation", "spell": "uitnodiging" },
+      { "speak": "feast", "spell": "fees" },
+      { "speak": "party", "spell": "partytjie" },
+      { "speak": "fun", "spell": "pret" },
+      { "speak": "date", "spell": "datum" },
+      { "speak": "time", "spell": "tyd" },
+      { "speak": "birthday", "spell": "verjaarsdag" },
+      { "speak": "simple", "spell": "eenvoudig" },
+      { "speak": "message", "spell": "boodskap" },
+      { "speak": "celebrate", "spell": "vier" }
+    ]
   }
 ]

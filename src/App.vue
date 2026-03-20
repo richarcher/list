@@ -65,11 +65,9 @@ function startQuiz() {
   if (!words.value.length) return
   cancel()
   const g = selectedGroup.value
-  const wordsList = g?.words ?? []
-  const translationsList = g?.translations ?? []
-  const entries = wordsList.map((word, i) => ({
-    word,
-    translation: translationsList[i]
+  const entries = (g?.words ?? []).map(({ speak, spell }) => ({
+    word: spell,
+    translation: speak
   }))
   quizWords.value = shuffleArray(entries)
   results.value = []
