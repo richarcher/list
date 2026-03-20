@@ -12,12 +12,12 @@ const emit = defineEmits(['key'])
 
 <template>
   <div class="w-full max-w-[28rem] mx-auto py-2 flex flex-col gap-1.5 [touch-action:manipulation]" role="group" aria-label="Keyboard">
-    <div class="flex justify-center gap-1 flex-nowrap">
+    <div class="flex justify-center gap-0.5 sm:gap-1 flex-nowrap">
       <button
         v-for="char in ROW1"
         :key="char"
         type="button"
-        class="btn btn-sm min-w-7 min-h-11 flex-1 max-w-10 text-base select-none"
+        class="btn btn-sm min-w-6 sm:min-w-7 min-h-11 flex-1 max-w-10 text-sm sm:text-base select-none"
         :aria-label="char"
         :disabled="disabled"
         @click="emit('key', char)"
@@ -25,12 +25,12 @@ const emit = defineEmits(['key'])
         {{ char }}
       </button>
     </div>
-    <div class="flex justify-center gap-1 flex-nowrap">
+    <div class="flex justify-center gap-0.5 sm:gap-1 flex-nowrap">
       <button
         v-for="char in ROW2"
         :key="char"
         type="button"
-        class="btn btn-sm min-w-7 min-h-11 flex-1 max-w-10 text-base select-none"
+        class="btn btn-sm min-w-6 sm:min-w-7 min-h-11 flex-1 max-w-10 text-sm sm:text-base select-none"
         :aria-label="char"
         :disabled="disabled"
         @click="emit('key', char)"
@@ -38,12 +38,12 @@ const emit = defineEmits(['key'])
         {{ char }}
       </button>
     </div>
-    <div class="flex justify-center gap-1 flex-nowrap">
+    <div class="flex justify-center gap-0.5 sm:gap-1 flex-nowrap">
       <button
         v-for="char in ROW3"
         :key="char"
         type="button"
-        class="btn btn-sm min-w-7 min-h-11 flex-1 max-w-10 text-base select-none"
+        class="btn btn-sm min-w-6 sm:min-w-7 min-h-11 flex-1 max-w-10 text-sm sm:text-base select-none"
         :aria-label="char"
         :disabled="disabled"
         @click="emit('key', char)"
