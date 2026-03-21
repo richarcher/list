@@ -18,12 +18,10 @@ const inputEl = ref(null)
 const feedback = ref(null) // 'correct' | 'incorrect' | null
 const showFeedback = ref(false)
 
-const expectedWord = computed(() => props.translation ?? props.word)
 const expectedWord = computed(() => props.word)
 
 function playWord() {
   cancel()
-  const textToSpeak = props.word
   const textToSpeak = props.translation ?? props.word
   speak(textToSpeak, { lang: 'en', rate: 0.85 })
 }
