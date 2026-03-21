@@ -1,6 +1,8 @@
 # Build and deploy to S3 on push to main (e.g. after merge).
 # Requires GitHub secrets: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_BUCKET,
 # and optionally AWS_REGION, CLOUDFRONT_DISTRIBUTION_ID (for cache invalidation).
+#
+# Node 24: aligns with GitHub Actions moving JS actions off Node 20 (see GH changelog).
 
 name: Deploy to S3
 
@@ -13,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "24"
           cache: "npm"
 
       - name: Install and build
@@ -27,7 +29,7 @@ jobs:
           npm run build
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
