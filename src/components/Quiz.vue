@@ -19,10 +19,12 @@ const feedback = ref(null) // 'correct' | 'incorrect' | null
 const showFeedback = ref(false)
 
 const expectedWord = computed(() => props.translation ?? props.word)
+const expectedWord = computed(() => props.word)
 
 function playWord() {
   cancel()
   const textToSpeak = props.word
+  const textToSpeak = props.translation ?? props.word
   speak(textToSpeak, { lang: 'en', rate: 0.85 })
 }
 
@@ -43,7 +45,7 @@ watch(
 function submit() {
   const raw = input.value.trim()
   const normalized = raw.toLowerCase()
-  const expected = props.translation ?? props.word
+  const expected = props.word
   const correct = expected.toLowerCase() === normalized
   feedback.value = correct ? 'correct' : 'incorrect'
   showFeedback.value = true
@@ -56,7 +58,7 @@ function submit() {
     correct,
     userSpelling: raw || undefined,
     translation: props.translation,
-    expectedWord: expected
+    expectedWord: expected,
   })
 }
 
@@ -108,7 +110,12 @@ function onSoftKey(key) {
       Word {{ wordIndex + 1 }} of {{ totalWords }}
     </p>
     <p class="m-0 text-lg text-base-content">
-      Listen, then spell the word <b>in English</b>
+      <template v-if="lang === 'af'">
+        Listen to the English word, then spell it <b>in Afrikaans</b>.
+      </template>
+      <template v-else>
+        Listen, then spell the word <b>in English</b>.
+      </template>
     </p>
     <div class="w-full">
       <button type="button" class="btn btn-neutral" @click="playWord" aria-label="Play word again">

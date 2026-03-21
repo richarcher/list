@@ -49,10 +49,10 @@ export function useQuiz(selectedGroup) {
   function onSkip() {
     const entry = currentEntry.value
     results.value.push({
-      word: entry?.translation ?? currentWord.value,
+      word: entry?.word ?? currentWord.value,
       correct: false,
       userSpelling: undefined,
-      translation: entry?.translation
+      translation: entry?.translation,
     })
     return onNext()
   }
