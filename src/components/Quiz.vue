@@ -11,7 +11,7 @@ const props = defineProps({
   lang: { type: String, default: 'en' },
   translation: { type: String, default: undefined },
 })
-const emit = defineEmits(['check', 'skip', 'next'])
+const emit = defineEmits(['check', 'skip', 'next', 'back'])
 
 const input = ref('')
 const inputEl = ref(null)
@@ -96,7 +96,14 @@ function onSoftKey(key) {
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-5 max-w-[28rem] mx-auto">
+  <div class="flex flex-col items-center gap-5 max-w-[28rem] mx-auto w-full">
+    <button
+      type="button"
+      class="btn btn-ghost btn-sm self-start -ml-1"
+      @click="emit('back')"
+    >
+      ← Back to lists
+    </button>
     <p class="m-0 text-sm text-base-content/70" aria-live="polite">
       Word {{ wordIndex + 1 }} of {{ totalWords }}
     </p>

@@ -31,6 +31,10 @@ function pickAnotherList() {
   if (groups.value.length) selectedIndex.value = 0
 }
 
+function backToLists() {
+  screen.value = 'list-picker'
+}
+
 onMounted(loadWordlists)
 </script>
 
@@ -54,6 +58,7 @@ onMounted(loadWordlists)
         @check="onCheck"
         @skip="handleSkip"
         @next="handleNext"
+        @back="backToLists"
       />
       <Results
         v-else-if="screen === 'results'"
