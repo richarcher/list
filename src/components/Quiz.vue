@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, nextTick, computed } from 'vue'
+import { ref, watch, nextTick, computed, onUnmounted } from 'vue'
 import { speak, cancel } from '../lib/speech'
 import { playCorrect, playIncorrect } from '../lib/sounds'
 import SoftKeyboard from './SoftKeyboard.vue'
@@ -10,6 +10,8 @@ const props = defineProps({
   totalWords: { type: Number, required: true },
   lang: { type: String, default: 'en' },
   translation: { type: String, default: undefined },
+  /** Mega-test / Mega-toets: no replay, show stopwatch from quiz start. */
+  megaMode: { type: Boolean, default: false },
 })
 const emit = defineEmits(['check', 'skip', 'next', 'back'])
 
@@ -19,6 +21,42 @@ const feedback = ref(null) // 'correct' | 'incorrect' | null
 const showFeedback = ref(false)
 
 const expectedWord = computed(() => props.word)
+
+const megaTitle = computed(() => (props.lang === 'af' ? 'Mega-toets' : 'Mega-test'))
+
+const elapsedMs = ref(0)
+let stopwatchId = null
+
+watch(
+  () => props.megaMode,
+  (mega) => {
+    if (stopwatchId) {
+      clearInterval(stopwatchId)
+      stopwatchId = null
+    }
+    if (mega) {
+      const started = Date.now()
+      elapsedMs.value = 0
+      stopwatchId = setInterval(() => {
+        elapsedMs.value = Date.now() - started
+      }, 100)
+    } else {
+      elapsedMs.value = 0
+    }
+  },
+  { immediate: true }
+)
+
+onUnmounted(() => {
+  if (stopwatchId) clearInterval(stopwatchId)
+})
+
+const elapsedLabel = computed(() => {
+  const totalSec = Math.floor(elapsedMs.value / 1000)
+  const m = Math.floor(totalSec / 60)
+  const s = totalSec % 60
+  return `${m}:${s.toString().padStart(2, '0')}`
+})
 
 function playWord() {
   cancel()
@@ -61,11 +99,21 @@ function submit() {
 }
 
 function nextWord() {
-  emit('next')
+  const isLast = props.wordIndex + 1 >= props.totalWords
+  if (props.megaMode && isLast) {
+    emit('next', { megaElapsedMs: elapsedMs.value })
+  } else {
+    emit('next')
+  }
 }
 
 function skip() {
-  emit('skip')
+  const isLast = props.wordIndex + 1 >= props.totalWords
+  if (props.megaMode && isLast) {
+    emit('skip', { megaElapsedMs: elapsedMs.value })
+  } else {
+    emit('skip')
+  }
 }
 
 function onKeydown(e) {
@@ -107,6 +155,16 @@ function onSoftKey(key) {
     <p class="m-0 text-sm text-base-content/70" aria-live="polite">
       Word {{ wordIndex + 1 }} of {{ totalWords }}
     </p>
+    <p
+      v-if="megaMode"
+      class="m-0 flex items-center justify-center gap-2 text-sm tabular-nums text-primary"
+      aria-live="polite"
+      :aria-label="`${megaTitle}, elapsed ${elapsedLabel}`"
+    >
+      <span class="font-medium">{{ megaTitle }}</span>
+      <span aria-hidden="true">·</span>
+      <span class="font-mono">{{ elapsedLabel }}</span>
+    </p>
     <p class="m-0 text-lg text-base-content">
       <template v-if="lang === 'af'">
         Listen to the English word, then spell it <b>in Afrikaans</b>.
@@ -115,7 +173,7 @@ function onSoftKey(key) {
         Listen, then spell the word <b>in English</b>.
       </template>
     </p>
-    <div class="w-full">
+    <div v-if="!megaMode" class="w-full">
       <button type="button" class="btn btn-neutral" @click="playWord" aria-label="Play word again">
         Play word again
       </button>
