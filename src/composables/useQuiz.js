@@ -10,7 +10,27 @@ function shuffleArray(arr) {
   return a
 }
 
-export function useQuiz(selectedGroup) {
+function dedupeWordPool(groups, lang) {
+  const seen = new Set()
+  const out = []
+  for (const g of groups) {
+    if (g.lang !== lang) continue
+    for (const w of g.words ?? []) {
+      const key = `${w.speak}\0${w.spell}`
+      if (seen.has(key)) continue
+      seen.add(key)
+      out.push({ word: w.spell, translation: w.speak })
+    }
+  }
+  return out
+}
+
+/** How many unique words exist across all lists for this language (for Mega buttons). */
+export function countMegaPoolWords(groups, lang) {
+  return dedupeWordPool(groups ?? [], lang).length
+}
+
+export function useQuiz(selectedGroup, groups) {
   const quizWords = ref([])
   const currentWordIndex = ref(0)
   const results = ref([])
@@ -27,12 +47,27 @@ export function useQuiz(selectedGroup) {
 
   function startQuiz() {
     const g = selectedGroup.value
-    if (!g?.words?.length) return
+    if (!g?.words?.length) return false
     cancel()
     const entries = g.words.map(({ speak, spell }) => ({ word: spell, translation: speak }))
     quizWords.value = shuffleArray(entries)
     results.value = []
     currentWordIndex.value = 0
+    return true
+  }
+
+  /**
+   * Up to 10 random words from all lists with the given `lang` (English or Afrikaans only — not mixed).
+   * @returns {boolean} false if there are no words in the pool
+   */
+  function startMegaQuiz(lang) {
+    const pool = dedupeWordPool(groups.value ?? [], lang)
+    if (!pool.length) return false
+    cancel()
+    quizWords.value = shuffleArray(pool).slice(0, Math.min(10, pool.length))
+    results.value = []
+    currentWordIndex.value = 0
+    return true
   }
 
   function onCheck(payload) {
@@ -57,5 +92,17 @@ export function useQuiz(selectedGroup) {
     return onNext()
   }
 
-  return { quizWords, currentWordIndex, currentEntry, currentWord, results, wrongWords, startQuiz, onCheck, onNext, onSkip }
+  return {
+    quizWords,
+    currentWordIndex,
+    currentEntry,
+    currentWord,
+    results,
+    wrongWords,
+    startQuiz,
+    startMegaQuiz,
+    onCheck,
+    onNext,
+    onSkip,
+  }
 }

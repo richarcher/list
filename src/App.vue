@@ -2,7 +2,7 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { useWordlists } from './composables/useWordlists'
-import { useQuiz } from './composables/useQuiz'
+import { useQuiz, countMegaPoolWords } from './composables/useQuiz'
 import { useOnline } from './composables/useOnline'
 import ListPicker from './components/ListPicker.vue'
 import Quiz from './components/Quiz.vue'
@@ -11,11 +11,15 @@ import UpdatePrompt from './components/UpdatePrompt.vue'
 import OfflineFallback from './components/OfflineFallback.vue'
 
 const screen = ref('list-picker')
+/** When set, quiz is a Mega-test / Mega-toets (try again repeats mega). */
+const megaLang = ref(null)
+/** Final stopwatch ms from last mega run (shown on results). */
+const megaElapsedMs = ref(null)
 
 const { groups, selectedIndex, selectedGroup, selectedLang, loadWordlists, selectList, loadState } =
   useWordlists()
-const { quizWords, currentWordIndex, currentEntry, currentWord, results, wrongWords, startQuiz, onCheck, onNext, onSkip } =
-  useQuiz(selectedGroup)
+const { quizWords, currentWordIndex, currentEntry, currentWord, results, wrongWords, startQuiz, startMegaQuiz, onCheck, onNext, onSkip } =
+  useQuiz(selectedGroup, groups)
 
 const { isOnline } = useOnline()
 
@@ -61,27 +65,73 @@ const offlineFallbackMessage = computed(() =>
     : 'You appear to be offline. Connect to the internet to load word lists.'
 )
 
-function handleNext() {
+const megaEnAvailable = computed(() => countMegaPoolWords(groups.value, 'en') > 0)
+const megaAfAvailable = computed(() => countMegaPoolWords(groups.value, 'af') > 0)
+
+const quizLang = computed(() => megaLang.value ?? selectedLang.value)
+
+const megaResultsLabel = computed(() => {
+  if (megaLang.value === 'af') return 'Mega-toets'
+  if (megaLang.value === 'en') return 'Mega-test'
+  return null
+})
+
+function handleNext(payload) {
   const finished = onNext()
-  if (finished) screen.value = 'results'
+  if (finished) {
+    megaElapsedMs.value =
+      payload && typeof payload === 'object' && 'megaElapsedMs' in payload
+        ? payload.megaElapsedMs
+        : null
+    screen.value = 'results'
+  }
 }
 
-function handleSkip() {
+function handleSkip(payload) {
   const finished = onSkip()
-  if (finished) screen.value = 'results'
+  if (finished) {
+    megaElapsedMs.value =
+      payload && typeof payload === 'object' && 'megaElapsedMs' in payload
+        ? payload.megaElapsedMs
+        : null
+    screen.value = 'results'
+  }
 }
 
 function startAndNavigate() {
-  startQuiz()
+  if (!startQuiz()) return
+  megaLang.value = null
+  megaElapsedMs.value = null
+  screen.value = 'quiz'
+}
+
+function startMegaNavigate(lang) {
+  if (!startMegaQuiz(lang)) return
+  megaLang.value = lang
+  megaElapsedMs.value = null
   screen.value = 'quiz'
 }
 
 function pickAnotherList() {
+  megaLang.value = null
+  megaElapsedMs.value = null
   screen.value = 'list-picker'
   if (groups.value.length) selectedIndex.value = 0
 }
 
+function tryAgain() {
+  megaElapsedMs.value = null
+  if (megaLang.value) {
+    if (!startMegaQuiz(megaLang.value)) return
+  } else {
+    if (!startQuiz()) return
+  }
+  screen.value = 'quiz'
+}
+
 function backToLists() {
+  megaLang.value = null
+  megaElapsedMs.value = null
   screen.value = 'list-picker'
 }
 
@@ -124,16 +174,20 @@ onUnmounted(() => {
         v-else-if="screen === 'list-picker'"
         :groups="groups"
         :selected-index="selectedIndex"
+        :mega-en-available="megaEnAvailable"
+        :mega-af-available="megaAfAvailable"
         @select="selectList($event)"
         @start="startAndNavigate"
+        @mega-start="startMegaNavigate"
       />
       <Quiz
         v-else-if="screen === 'quiz' && currentWord"
         :word="currentWord"
         :word-index="currentWordIndex"
         :total-words="quizWords.length"
-        :lang="selectedLang"
+        :lang="quizLang"
         :translation="currentEntry?.translation"
+        :mega-mode="!!megaLang"
         @check="onCheck"
         @skip="handleSkip"
         @next="handleNext"
@@ -144,7 +198,9 @@ onUnmounted(() => {
         :score="results.filter((r) => r.correct).length"
         :total="results.length"
         :wrong-words="wrongWords"
-        @try-again="startAndNavigate"
+        :mega-elapsed-ms="megaElapsedMs"
+        :mega-label="megaResultsLabel"
+        @try-again="tryAgain"
         @pick-another-date="pickAnotherList"
       />
     </main>

@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { characterDiff } from '../lib/diff'
 import { runConfetti } from '../lib/confetti'
 import { playFanfare } from '../lib/sounds'
@@ -7,13 +7,28 @@ import { playFanfare } from '../lib/sounds'
 const props = defineProps({
   score: { type: Number, required: true },
   total: { type: Number, required: true },
-  wrongWords: { type: Array, default: () => [] }
+  wrongWords: { type: Array, default: () => [] },
+  /** Mega quiz final stopwatch (ms); null for normal quizzes. */
+  megaElapsedMs: { type: Number, default: null },
+  megaLabel: { type: String, default: null },
 })
 defineEmits(['tryAgain', 'pickAnotherDate'])
 
 function getDiff(correct, userSpelling) {
   return characterDiff(correct, userSpelling ?? '')
 }
+
+const megaTimeDisplay = computed(() => {
+  if (props.megaElapsedMs == null || props.megaElapsedMs < 0) return null
+  const totalSec = Math.floor(props.megaElapsedMs / 1000)
+  const m = Math.floor(totalSec / 60)
+  const s = totalSec % 60
+  return `${m}:${s.toString().padStart(2, '0')}`
+})
+
+const showMegaTime = computed(
+  () => megaTimeDisplay.value != null && props.megaLabel != null && props.megaLabel.length > 0
+)
 
 onMounted(() => {
   if (props.total > 0 && props.score === props.total) {
@@ -31,6 +46,15 @@ onMounted(() => {
     </p>
     <p class="m-0 text-xl text-base-content/70" aria-live="polite">
       You got <strong class="text-base-content">{{ score }}</strong> out of <strong class="text-base-content">{{ total }}</strong> correct.
+    </p>
+    <p
+      v-if="showMegaTime"
+      class="m-0 flex flex-wrap items-center justify-center gap-2 text-lg tabular-nums text-primary"
+      aria-live="polite"
+    >
+      <span class="font-medium font-sans">{{ megaLabel }}</span>
+      <span aria-hidden="true">·</span>
+      <span class="font-mono">{{ megaTimeDisplay }}</span>
     </p>
     <section v-if="wrongWords.length" class="w-full text-left" aria-labelledby="wrong-heading">
       <h2 id="wrong-heading" class="m-0 mb-2 text-xl text-base-content">Words to practise</h2>
