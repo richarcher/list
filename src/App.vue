@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { useWordlists } from './composables/useWordlists'
 import { useQuiz } from './composables/useQuiz'
+import { useOnline } from './composables/useOnline'
 import ListPicker from './components/ListPicker.vue'
 import Quiz from './components/Quiz.vue'
 import Results from './components/Results.vue'
@@ -10,6 +11,7 @@ const screen = ref('list-picker')
 
 const { groups, selectedIndex, selectedGroup, selectedLang, loadWordlists, selectList } = useWordlists()
 const { quizWords, currentWordIndex, currentEntry, currentWord, results, wrongWords, startQuiz, onCheck, onNext, onSkip } = useQuiz(selectedGroup)
+const { isOnline } = useOnline()
 
 function handleNext() {
   const finished = onNext()
@@ -40,6 +42,15 @@ onMounted(loadWordlists)
 
 <template>
   <div id="app" lang="en-ZA" class="min-h-screen flex flex-col">
+    <header
+      class="w-full flex justify-end items-center px-3 py-2 min-h-[2.5rem] border-b border-base-300/60"
+      aria-label="App status"
+    >
+      <span v-if="!isOnline" class="badge badge-warning badge-outline text-xs font-medium">
+        Offline
+      </span>
+    </header>
+
     <main class="flex-1 flex flex-col items-center justify-center p-4">
       <ListPicker
         v-if="screen === 'list-picker'"
