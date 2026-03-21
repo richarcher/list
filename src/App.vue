@@ -124,10 +124,19 @@ onUnmounted(() => {
       />
     </main>
 
-    <footer class="w-full py-3 px-4 border-t border-base-300/60 text-center text-xs text-base-content/60">
-      <button type="button" class="link link-primary text-xs" @click="checkForUpdates">
-        Check for updates
-      </button>
+    <footer class="w-full py-4 px-4 border-t border-base-300/60 text-center text-xs text-base-content/60">
+      <div class="flex flex-col gap-1.5 justify-center items-center">
+        <div class="flex flex-col sm:flex-row gap-1 sm:gap-2 justify-center items-center">
+          <span>
+            List &amp; Lys ·
+            <span class="text-base-content/80 font-mono tracking-tight">{{ buildId }}</span>
+            <span class="text-base-content/50"> · built {{ builtAtLabel }}</span>
+          </span>
+          <button type="button" class="link link-primary text-xs" @click="checkForUpdates">
+            Check for updates
+          </button>
+        </div>
+      </div>
     </footer>
   </div>
 </template>
