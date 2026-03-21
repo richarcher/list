@@ -1,17 +1,45 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { useWordlists } from './composables/useWordlists'
 import { useQuiz } from './composables/useQuiz'
 import { useOnline } from './composables/useOnline'
 import ListPicker from './components/ListPicker.vue'
 import Quiz from './components/Quiz.vue'
 import Results from './components/Results.vue'
+import UpdatePrompt from './components/UpdatePrompt.vue'
 
 const screen = ref('list-picker')
 
 const { groups, selectedIndex, selectedGroup, selectedLang, loadWordlists, selectList } = useWordlists()
-const { quizWords, currentWordIndex, currentEntry, currentWord, results, wrongWords, startQuiz, onCheck, onNext, onSkip } = useQuiz(selectedGroup)
+const { quizWords, currentWordIndex, currentEntry, currentWord, results, wrongWords, startQuiz, onCheck, onNext, onSkip } =
+  useQuiz(selectedGroup)
+
 const { isOnline } = useOnline()
+
+const swRegistration = ref(null)
+let swIntervalId
+let onVisibility
+
+const { needRefresh, updateServiceWorker } = useRegisterSW({
+  immediate: true,
+  onRegisteredSW(_swUrl, r) {
+    if (swIntervalId) clearInterval(swIntervalId)
+    if (onVisibility) document.removeEventListener('visibilitychange', onVisibility)
+
+    swRegistration.value = r ?? null
+    if (!r) return
+
+    swIntervalId = setInterval(() => {
+      r.update()
+    }, 60 * 60 * 1000)
+
+    onVisibility = () => {
+      if (document.visibilityState === 'visible') r.update()
+    }
+    document.addEventListener('visibilitychange', onVisibility)
+  },
+})
 
 function handleNext() {
   const finished = onNext()
@@ -37,11 +65,26 @@ function backToLists() {
   screen.value = 'list-picker'
 }
 
+function checkForUpdates() {
+  swRegistration.value?.update().catch(() => {})
+}
+
+async function reloadToUpdate() {
+  await updateServiceWorker()
+}
+
 onMounted(loadWordlists)
+
+onUnmounted(() => {
+  if (swIntervalId) clearInterval(swIntervalId)
+  if (onVisibility) document.removeEventListener('visibilitychange', onVisibility)
+})
 </script>
 
 <template>
   <div id="app" lang="en-ZA" class="min-h-screen flex flex-col">
+    <UpdatePrompt :visible="needRefresh" @reload="reloadToUpdate" />
+
     <header
       class="w-full flex justify-end items-center px-3 py-2 min-h-[2.5rem] border-b border-base-300/60"
       aria-label="App status"
@@ -80,5 +123,11 @@ onMounted(loadWordlists)
         @pick-another-date="pickAnotherList"
       />
     </main>
+
+    <footer class="w-full py-3 px-4 border-t border-base-300/60 text-center text-xs text-base-content/60">
+      <button type="button" class="link link-primary text-xs" @click="checkForUpdates">
+        Check for updates
+      </button>
+    </footer>
   </div>
 </template>
