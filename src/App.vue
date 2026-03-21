@@ -102,7 +102,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="app" lang="en-ZA" class="min-h-screen flex flex-col">
+  <div id="app" lang="en-ZA" class="min-h-app flex flex-col">
     <UpdatePrompt :visible="needRefresh" @reload="reloadToUpdate" />
 
     <header
@@ -149,7 +149,10 @@ onUnmounted(() => {
       />
     </main>
 
-    <footer v-if="screen === 'list-picker'" class="w-full py-4 px-4 border-t border-base-300/60 text-center text-xs text-base-content/60">
+    <footer
+      v-if="screen === 'list-picker'"
+      class="w-full border-t border-base-300/60 px-4 pt-4 text-center text-xs text-base-content/60 pb-[max(1rem,env(safe-area-inset-bottom,0px))]"
+    >
       <div class="flex flex-col gap-1.5 justify-center items-center">
         <div class="flex flex-col sm:flex-row gap-1 sm:gap-2 justify-center items-center">
           <span>

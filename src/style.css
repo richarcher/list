@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Mobile / PWA: 100vh is often taller than the visible viewport (browser chrome, WebView),
+   which causes pointless vertical scroll. 100dvh tracks the dynamic viewport. */
+@layer utilities {
+  .min-h-app {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
 @layer base {
   html {
     font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -12,6 +21,8 @@
   }
   body {
     @apply m-0 text-base;
+    /* Avoid horizontal rubber-banding revealing empty space beside the layout */
+    overflow-x: hidden;
   }
   h1, h2 {
     @apply font-medium text-base-content;
