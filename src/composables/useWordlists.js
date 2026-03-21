@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 export function useWordlists() {
   const wordlists = ref([])
   const selectedIndex = ref(0)
+  const loadState = ref('idle')
 
   const groups = computed(() => {
     const list = Array.isArray(wordlists.value) ? wordlists.value : []
@@ -13,16 +14,22 @@ export function useWordlists() {
   const selectedLang = computed(() => selectedGroup.value?.lang ?? 'en')
 
   function loadWordlists() {
+    loadState.value = 'loading'
     fetch('/wordlists.json')
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(String(r.status))
+        return r.json()
+      })
       .then((data) => {
         wordlists.value = Array.isArray(data) ? data : []
+        loadState.value = 'ok'
         if (groups.value.length && selectedIndex.value >= groups.value.length) {
           selectedIndex.value = 0
         }
       })
       .catch(() => {
         wordlists.value = []
+        loadState.value = 'error'
       })
   }
 
@@ -30,5 +37,5 @@ export function useWordlists() {
     selectedIndex.value = Number(index)
   }
 
-  return { groups, selectedIndex, selectedGroup, selectedLang, loadWordlists, selectList }
+  return { groups, selectedIndex, selectedGroup, selectedLang, loadWordlists, selectList, loadState }
 }

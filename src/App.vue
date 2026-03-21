@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { useWordlists } from './composables/useWordlists'
 import { useQuiz } from './composables/useQuiz'
@@ -8,10 +8,12 @@ import ListPicker from './components/ListPicker.vue'
 import Quiz from './components/Quiz.vue'
 import Results from './components/Results.vue'
 import UpdatePrompt from './components/UpdatePrompt.vue'
+import OfflineFallback from './components/OfflineFallback.vue'
 
 const screen = ref('list-picker')
 
-const { groups, selectedIndex, selectedGroup, selectedLang, loadWordlists, selectList } = useWordlists()
+const { groups, selectedIndex, selectedGroup, selectedLang, loadWordlists, selectList, loadState } =
+  useWordlists()
 const { quizWords, currentWordIndex, currentEntry, currentWord, results, wrongWords, startQuiz, onCheck, onNext, onSkip } =
   useQuiz(selectedGroup)
 
@@ -40,6 +42,24 @@ const { needRefresh, updateServiceWorker } = useRegisterSW({
     document.addEventListener('visibilitychange', onVisibility)
   },
 })
+
+const buildId = __BUILD_ID__
+const buildStamp = __BUILD_STAMP__
+
+const builtAtLabel = computed(() => {
+  const s = buildStamp
+  return s.length >= 16 ? `${s.slice(0, 10)} ${s.slice(11, 16)}` : s
+})
+
+const showListLoadFailure = computed(
+  () => screen.value === 'list-picker' && loadState.value === 'error' && groups.value.length === 0
+)
+
+const offlineFallbackMessage = computed(() =>
+  isOnline.value
+    ? 'Word lists could not be loaded. Check your connection and try again.'
+    : 'You appear to be offline. Connect to the internet to load word lists.'
+)
 
 function handleNext() {
   const finished = onNext()
@@ -95,8 +115,13 @@ onUnmounted(() => {
     </header>
 
     <main class="flex-1 flex flex-col items-center justify-center p-4">
+      <OfflineFallback
+        v-if="showListLoadFailure"
+        :message="offlineFallbackMessage"
+        @retry="loadWordlists"
+      />
       <ListPicker
-        v-if="screen === 'list-picker'"
+        v-else-if="screen === 'list-picker'"
         :groups="groups"
         :selected-index="selectedIndex"
         @select="selectList($event)"
