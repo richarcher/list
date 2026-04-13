@@ -100,5 +100,39 @@
       { "speak": "message", "spell": "boodskap" },
       { "speak": "celebrate", "spell": "vier" }
     ]
+  },
+  {
+    "date": "2026-04-13",
+    "title": "Term 2 List 1 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "solid", "spell": "solid" },
+      { "speak": "liquid", "spell": "liquid" },
+      { "speak": "gas", "spell": "gas" },
+      { "speak": "melt", "spell": "melt" },
+      { "speak": "qualities", "spell": "qualities" },
+      { "speak": "commitment", "spell": "commitment" },
+      { "speak": "beliefs", "spell": "beliefs" },
+      { "speak": "brave", "spell": "brave" },
+      { "speak": "listen", "spell": "listen" },
+      { "speak": "courageous", "spell": "courageous" }
+    ]
+  },
+  {
+    "date": "2026-04-13",
+    "title": "Occupations list (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "actions", "spell": "aksies" },
+      { "speak": "rhyming word", "spell": "rymwoord" },
+      { "speak": "fire brigade", "spell": "brandweer" },
+      { "speak": "builder", "spell": "bouer" },
+      { "speak": "doctor", "spell": "dokter" },
+      { "speak": "painter", "spell": "verwer" },
+      { "speak": "farmer", "spell": "boer" },
+      { "speak": "singer", "spell": "sanger" },
+      { "speak": "choices", "spell": "keuse" },
+      { "speak": "cleaner", "spell": "skoonmaker" }
+    ]
   }
 ]
