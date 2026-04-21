@@ -134,5 +134,39 @@
       { "speak": "choices", "spell": "keuse" },
       { "speak": "cleaner", "spell": "skoonmaker" }
     ]
+  },
+  {
+    "date": "2026-04-20",
+    "title": "Term 2 List 2 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "evaporate", "spell": "evaporate" },
+      { "speak": "condense", "spell": "condense" },
+      { "speak": "solidify", "spell": "solidify" },
+      { "speak": "access", "spell": "access" },
+      { "speak": "announcement", "spell": "announcement" },
+      { "speak": "reporter", "spell": "reporter" },
+      { "speak": "natural", "spell": "natural" },
+      { "speak": "article", "spell": "article" },
+      { "speak": "headline", "spell": "headline" },
+      { "speak": "newspaper", "spell": "newspaper" }
+    ]
+  },
+  {
+    "date": "2026-04-20",
+    "title": "Occupations list (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "summer", "spell": "somer" },
+      { "speak": "winter", "spell": "winter" },
+      { "speak": "spring", "spell": "lente" },
+      { "speak": "autumn", "spell": "herfs" },
+      { "speak": "seasons", "spell": "seisoene" },
+      { "speak": "cold", "spell": "koud" },
+      { "speak": "warm", "spell": "warm" },
+      { "speak": "rain", "spell": "reen" },
+      { "speak": "sunshine", "spell": "sonskyn" },
+      { "speak": "clouds", "spell": "wolke" }
+    ]
   }
 ]
