@@ -154,7 +154,7 @@
   },
   {
     "date": "2026-04-20",
-    "title": "Weather list (Afrikaans)",
+    "title": "Weather list 1 (Afrikaans)",
     "lang": "af",
     "words": [
       { "speak": "summer", "spell": "somer" },
@@ -167,6 +167,40 @@
       { "speak": "rain", "spell": "reen" },
       { "speak": "sunshine", "spell": "sonskyn" },
       { "speak": "clouds", "spell": "wolke" }
+    ]
+  },
+  {
+    "date": "2026-05-04",
+    "title": "Term 2 List 3 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "manufactured", "spell": "manufactured" },
+      { "speak": "malleable", "spell": "malleable" },
+      { "speak": "fibre", "spell": "fibre" },
+      { "speak": "brittle", "spell": "brittle" },
+      { "speak": "illustration", "spell": "illustration" },
+      { "speak": "magazine", "spell": "magazine" },
+      { "speak": "caption", "spell": "caption" },
+      { "speak": "vendor", "spell": "vendor" },
+      { "speak": "dictionary", "spell": "dictionary" },
+      { "speak": "by-line", "spell": "by-line" }
+    ]
+  },
+  {
+    "date": "2026-05-04",
+    "title": "Weather list 2 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "thunderstorm", "spell": "donderstorm" },
+      { "speak": "temperature", "spell": "temperatuur" },
+      { "speak": "windy", "spell": "winderig" },
+      { "speak": "rainy", "spell": "reenerig" },
+      { "speak": "snow", "spell": "sneeu" },
+      { "speak": "hail", "spell": "hael" },
+      { "speak": "cool", "spell": "koel" },
+      { "speak": "partly cloudy", "spell": "gedeeltelik bewolk" },
+      { "speak": "heavy", "spell": "swaar" },
+      { "speak": "light", "spell": "ligte" }
     ]
   }
 ]
