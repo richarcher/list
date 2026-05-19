@@ -202,5 +202,73 @@
       { "speak": "heavy", "spell": "swaar" },
       { "speak": "light", "spell": "ligte" }
     ]
+  },
+  {
+    "date": "2026-05-12",
+    "title": "Term 2 List 4 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "properties", "spell": "properties" },
+      { "speak": "waterproof", "spell": "waterproof" },
+      { "speak": "dent", "spell": "dent" },
+      { "speak": "flexible", "spell": "flexible" },
+      { "speak": "stiff", "spell": "stiff" },
+      { "speak": "examine", "spell": "examine" },
+      { "speak": "absorbent", "spell": "absorbent" },
+      { "speak": "earthquake", "spell": "earthquake" },
+      { "speak": "photograph", "spell": "photograph" },
+      { "speak": "social", "spell": "social" }
+    ]
+  },
+  {
+    "date": "2026-05-12",
+    "title": "Term 2 Lys 4 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "mielies", "spell": "mielies" },
+      { "speak": "plant", "spell": "plant" },
+      { "speak": "pick", "spell": "pluk" },
+      { "speak": "cook", "spell": "kook" },
+      { "speak": "seeds", "spell": "pitte" },
+      { "speak": "cow", "spell": "koei" },
+      { "speak": "dog", "spell": "hond" },
+      { "speak": "cat", "spell": "kat" },
+      { "speak": "hen", "spell": "hennetjie" },
+      { "speak": "donkey", "spell": "donkie" }
+    ]
+  },
+  {
+    "date": "2026-05-18",
+    "title": "Term 2 List 5 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "stable", "spell": "stable" },
+      { "speak": "unstable", "spell": "unstable" },
+      { "speak": "strengthen", "spell": "strengthen" },
+      { "speak": "struts", "spell": "struts" },
+      { "speak": "stronger", "spell": "stronger" },
+      { "speak": "weaker", "spell": "weaker" },
+      { "speak": "indigenous", "spell": "indigenous" },
+      { "speak": "traditional", "spell": "traditional" },
+      { "speak": "specification", "spell": "specification" },
+      { "speak": "constraints", "spell": "constraints" }
+    ]
+  },
+  {
+    "date": "2026-05-18",
+    "title": "Term 2 Lys 5 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "animals", "spell": "diere" },
+      { "speak": "sow", "spell": "saai" },
+      { "speak": "first", "spell": "eers" },
+      { "speak": "lazy", "spell": "lui" },
+      { "speak": "cooked", "spell": "gekookte" },
+      { "speak": "work", "spell": "werk" },
+      { "speak": "characters", "spell": "karakters" },
+      { "speak": "feelings", "spell": "gevoelens" },
+      { "speak": "myself", "spell": "self" },
+      { "speak": "answer", "spell": "antwoord" }
+    ]
   }
 ]
