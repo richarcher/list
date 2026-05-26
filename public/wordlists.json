@@ -270,5 +270,40 @@
       { "speak": "myself", "spell": "self" },
       { "speak": "answer", "spell": "antwoord" }
     ]
+  },
+  {
+    "date": "2026-05-25",
+    "title": "Term 2 List 6 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "campaign", "spell": "campaign" },
+      { "speak": "extract", "spell": "extract" },
+      { "speak": "truth", "spell": "truth" },
+      { "speak": "sacrifice", "spell": "sacrifice" },
+      { "speak": "ideas", "spell": "ideas" },
+      { "speak": "protest", "spell": "protest" },
+      { "speak": "peaceful", "spell": "peaceful" },
+      { "speak": "rights", "spell": "rights" },
+      { "speak": "pyjamas", "spell": "pyjamas" },
+      { "speak": "jealous", "spell": "jealous" }
+    ]
+  },
+  {
+    "date": "2026-05-25",
+    "title": "Term 2 Lys 6 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "recipe", "spell": "resep" },
+      { "speak": "ingredients", "spell": "bestanddele" },
+      { "speak": "method", "spell": "metode" },
+      { "speak": "instructions", "spell": "instruksies" },
+      { "speak": "title", "spell": "titel" },
+      { "speak": "verb", "spell": "werkwoord" },
+      { "speak": "plural", "spell": "meervoud" },
+      { "speak": "past", "spell": "verlede" },
+      { "speak": "adjective", "spell": "byvoeglike naamwoord" },
+      { "speak": "singular", "spell": "enkelvoud" },
+      { "speak": "summary", "spell": "opsomming" }
+    ]
   }
 ]
