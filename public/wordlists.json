@@ -305,5 +305,85 @@
       { "speak": "singular", "spell": "enkelvoud" },
       { "speak": "summary", "spell": "opsomming" }
     ]
+  },
+  {
+    "date": "2026-07-20",
+    "title": "Term 3 List 1 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "processed", "spell": "processed" },
+      { "speak": "transport", "spell": "transport" },
+      { "speak": "source", "spell": "source" },
+      { "speak": "diary", "spell": "diary" },
+      { "speak": "nutrients", "spell": "nutrients" },
+      { "speak": "memorise", "spell": "memorise" },
+      { "speak": "happened", "spell": "happened" },
+      { "speak": "because", "spell": "because" },
+      { "speak": "energy", "spell": "energy" },
+      { "speak": "express", "spell": "express" },
+      { "speak": "easiest", "spell": "easiest" },
+      { "speak": "swimming", "spell": "swimming" },
+      { "speak": "received", "spell": "received" },
+      { "speak": "which", "spell": "which" },
+      { "speak": "surprise", "spell": "surprise" }
+    ]
+  },
+  {
+    "date": "2026-07-20",
+    "title": "Term 3 Lys 1 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "city", "spell": "stad" },
+      { "speak": "parents", "spell": "ouers" },
+      { "speak": "nurse", "spell": "verpleegster" },
+      { "speak": "dream", "spell": "droom" },
+      { "speak": "hopitals", "spell": "hospitale" },
+      { "speak": "heroine", "spell": "heldin" },
+      { "speak": "soldiers", "spell": "soldate" },
+      { "speak": "every night", "spell": "snags" },
+      { "speak": "example", "spell": "voorbeeld" },
+      { "speak": "medicine", "spell": "medisyne" },
+      { "speak": "war", "spell": "oorlog" },
+      { "speak": "hero", "spell": "held" }
+    ]
+  },
+  {
+    "date": "2026-07-27",
+    "title": "Term 3 List 2 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "extracts", "spell": "extracts" },
+      { "speak": "journal", "spell": "journal" },
+      { "speak": "experience", "spell": "experience" },
+      { "speak": "herbivore", "spell": "herbivore" },
+      { "speak": "carnivore", "spell": "carnivore" },
+      { "speak": "omnivore", "spell": "omnivore" },
+      { "speak": "subsistence", "spell": "subsistence" },
+      { "speak": "commercial", "spell": "commercial" },
+      { "speak": "picture", "spell": "picture" },
+      { "speak": "pretend", "spell": "pretend" },
+      { "speak": "smiling", "spell": "smiling" },
+      { "speak": "saying", "spell": "saying" },
+      { "speak": "tired", "spell": "tired" },
+      { "speak": "weird", "spell": "weird" },
+      { "speak": "wonder", "spell": "wonder" }
+    ]
+  },
+  {
+    "date": "2026-07-27",
+    "title": "Term 3 Lys 2 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "peace", "spell": "vrede" },
+      { "speak": "by day", "spell": "bedags" },
+      { "speak": "care for", "spell": "versorg" },
+      { "speak": "born", "spell": "gebore" },
+      { "speak": "who", "spell": "wie" },
+      { "speak": "what", "spell": "wat" },
+      { "speak": "when", "spell": "wanneer" },
+      { "speak": "where", "spell": "waar" },
+      { "speak": "why", "spell": "hoekom" },
+      { "speak": "who", "spell": "hoe" }
+    ]
   }
 ]
