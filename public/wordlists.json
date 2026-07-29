@@ -383,7 +383,7 @@
       { "speak": "when", "spell": "wanneer" },
       { "speak": "where", "spell": "waar" },
       { "speak": "why", "spell": "hoekom" },
-      { "speak": "who", "spell": "hoe" }
+      { "speak": "how", "spell": "hoe" }
     ]
   }
 ]
