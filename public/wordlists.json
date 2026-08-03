@@ -385,5 +385,45 @@
       { "speak": "why", "spell": "hoekom" },
       { "speak": "how", "spell": "hoe" }
     ]
+  },
+  {
+    "date": "2026-08-03",
+    "title": "Term 3 List 3 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "personal", "spell": "personal" },
+      { "speak": "privacy", "spell": "privacy" },
+      { "speak": "record", "spell": "record" },
+      { "speak": "transfer", "spell": "transfer" },
+      { "speak": "system", "spell": "system" },
+      { "speak": "specialised", "spell": "specialised" },
+      { "speak": "safety", "spell": "safety" },
+      { "speak": "locomotives", "spell": "locomotives" },
+      { "speak": "does", "spell": "does" },
+      { "speak": "disappear", "spell": "disappear" },
+      { "speak": "focussed", "spell": "focussed" },
+      { "speak": "government", "spell": "government" },
+      { "speak": "parliament", "spell": "parliament" },
+      { "speak": "although", "spell": "although" },
+      { "speak": "taught", "spell": "taught" }
+    ]
+  },
+  {
+    "date": "2026-08-03",
+    "title": "Term 3 Lys 3 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "fable", "spell": "fabel" },
+      { "speak": "woods", "spell": "woud" },
+      { "speak": "speed", "spell": "spoed" },
+      { "speak": "fast", "spell": "vinnig" },
+      { "speak": "slow", "spell": "stadig" },
+      { "speak": "race", "spell": "resies" },
+      { "speak": "official or judge", "spell": "beampte" },
+      { "speak": "proud", "spell": "trots" },
+      { "speak": "support", "spell": "ondersteun" },
+      { "speak": "continually", "spell": "aanhoudend" },
+      { "speak": "relax", "spell": "ontspan" }
+    ]
   }
 ]
