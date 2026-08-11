@@ -425,5 +425,45 @@
       { "speak": "continually", "spell": "aanhoudend" },
       { "speak": "relax", "spell": "ontspan" }
     ]
+  },
+  {
+    "date": "2026-08-11",
+    "title": "Term 3 List 4 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "acronym", "spell": "acronym" },
+      { "speak": "abbreviations", "spell": "abbreviations" },
+      { "speak": "repetition", "spell": "repetition" },
+      { "speak": "metaphor", "spell": "metaphor" },
+      { "speak": "similie", "spell": "similie" },
+      { "speak": "vibrate", "spell": "vibrate" },
+      { "speak": "renew", "spell": "renew" },
+      { "speak": "fresh", "spell": "fresh" },
+      { "speak": "stored", "spell": "stored" },
+      { "speak": "advantages", "spell": "advantages" },
+      { "speak": "disadvantages", "spell": "disadvantages" },
+      { "speak": "fumes", "spell": "fumes" },
+      { "speak": "coming", "spell": "coming" },
+      { "speak": "definitely", "spell": "definitely" },
+      { "speak": "clothes", "spell": "clothes" }
+    ]
+  },
+  {
+    "date": "2026-08-11",
+    "title": "Term 3 Lys 4 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "excited", "spell": "opgewonde" },
+      { "speak": "competition", "spell": "wedstryd" },
+      { "speak": "race", "spell": "wedren" },
+      { "speak": "encourage", "spell": "juig" },
+      { "speak": "spread", "spell": "versprei" },
+      { "speak": "characters", "spell": "karakter" },
+      { "speak": "problem", "spell": "probleem" },
+      { "speak": "solved", "spell": "opgelos" },
+      { "speak": "background", "spell": "agtergrond" },
+      { "speak": "hero", "spell": "held" },
+      { "speak": "life lesson", "spell": "lewensles" }
+    ]
   }
 ]
