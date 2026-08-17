@@ -465,5 +465,44 @@
       { "speak": "hero", "spell": "held" },
       { "speak": "life lesson", "spell": "lewensles" }
     ]
+  },
+  {
+    "date": "2026-08-17",
+    "title": "Term 3 List 5 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "figurative", "spell": "figurative" },
+      { "speak": "exaggeration", "spell": "exaggeration" },
+      { "speak": "emphasise", "spell": "emphasise" },
+      { "speak": "fossil", "spell": "fossil" },
+      { "speak": "borehole", "spell": "borehole" },
+      { "speak": "pollution", "spell": "pollution" },
+      { "speak": "current", "spell": "current" },
+      { "speak": "believe", "spell": "believe" },
+      { "speak": "receive", "spell": "receive" },
+      { "speak": "before", "spell": "before" },
+      { "speak": "enough", "spell": "enough" },
+      { "speak": "embarrass", "spell": "embarrass" },
+      { "speak": "question", "spell": "question" },
+      { "speak": "caught", "spell": "caught" },
+      { "speak": "bought", "spell": "bought" }
+    ]
+  },
+  {
+    "date": "2026-08-17",
+    "title": "Term 3 Lys 5 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "poster", "spell": "plakkaat" },
+      { "speak": "problem", "spell": "probleem" },
+      { "speak": "research", "spell": "navorsing" },
+      { "speak": "example", "spell": "voorbeeld" },
+      { "speak": "steady", "spell": "standvastig" },
+      { "speak": "choose", "spell": "verkies" },
+      { "speak": "explain", "spell": "verduidelik" },
+      { "speak": "relevant", "spell": "relevant" },
+      { "speak": "reason", "spell": "rede" },
+      { "speak": "compare", "spell": "vergelyk" }
+    ]
   }
 ]
