@@ -3,6 +3,7 @@ import { computed, onMounted } from 'vue'
 import { characterDiff } from '../lib/diff'
 import { runConfetti } from '../lib/confetti'
 import { playFanfare } from '../lib/sounds'
+import ScoreHistory from './ScoreHistory.vue'
 
 const props = defineProps({
   score: { type: Number, required: true },
@@ -11,6 +12,8 @@ const props = defineProps({
   /** Mega quiz final stopwatch (ms); null for normal quizzes. */
   megaElapsedMs: { type: Number, default: null },
   megaLabel: { type: String, default: null },
+  /** This list's past attempts (empty for mega runs). */
+  history: { type: Array, default: () => [] },
 })
 defineEmits(['tryAgain', 'pickAnotherDate'])
 
@@ -56,6 +59,7 @@ onMounted(() => {
       <span aria-hidden="true">·</span>
       <span class="font-mono">{{ megaTimeDisplay }}</span>
     </p>
+    <ScoreHistory v-if="history.length > 1" :history="history" label="Your progress on this list" />
     <section v-if="wrongWords.length" class="w-full text-left" aria-labelledby="wrong-heading">
       <h2 id="wrong-heading" class="m-0 mb-2 text-xl text-base-content">Words to practise</h2>
       <p class="m-0 mb-4 text-sm text-base-content/70">Here’s the difference between what you wrote and the correct spelling.</p>
