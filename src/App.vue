@@ -5,6 +5,7 @@ import { useWordlists } from './composables/useWordlists'
 import { useQuiz, countMegaPoolWords } from './composables/useQuiz'
 import { useOnline } from './composables/useOnline'
 import ListPicker from './components/ListPicker.vue'
+import StudyList from './components/StudyList.vue'
 import Quiz from './components/Quiz.vue'
 import Results from './components/Results.vue'
 import UpdatePrompt from './components/UpdatePrompt.vue'
@@ -98,6 +99,11 @@ function handleSkip(payload) {
   }
 }
 
+function studyAndNavigate() {
+  if (!selectedGroup.value?.words?.length) return
+  screen.value = 'study'
+}
+
 function startAndNavigate() {
   if (!startQuiz()) return
   megaLang.value = null
@@ -178,7 +184,13 @@ onUnmounted(() => {
         :mega-af-available="megaAfAvailable"
         @select="selectList($event)"
         @start="startAndNavigate"
+        @study="studyAndNavigate"
         @mega-start="startMegaNavigate"
+      />
+      <StudyList
+        v-else-if="screen === 'study'"
+        :group="selectedGroup"
+        @back="backToLists"
       />
       <Quiz
         v-else-if="screen === 'quiz' && currentWord"

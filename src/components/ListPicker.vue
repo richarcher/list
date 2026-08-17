@@ -5,7 +5,7 @@ defineProps({
   megaEnAvailable: { type: Boolean, default: false },
   megaAfAvailable: { type: Boolean, default: false },
 })
-defineEmits(['select', 'start', 'mega-start'])
+defineEmits(['select', 'start', 'study', 'mega-start'])
 </script>
 
 <template>
@@ -29,14 +29,24 @@ defineEmits(['select', 'start', 'mega-start'])
       </option>
     </select>
     <p id="select-desc" class="m-0 text-sm text-base-content/70">{{ groups[selectedIndex]?.words?.length ?? 0 }} words in this list.</p>
-    <button
-      type="button"
-      class="btn btn-primary"
-      :disabled="groups.length === 0 || !groups[selectedIndex]?.words?.length"
-      @click="$emit('start')"
-    >
-      Start quiz
-    </button>
+    <div class="flex gap-2 flex-wrap justify-center">
+      <button
+        type="button"
+        class="btn btn-primary"
+        :disabled="groups.length === 0 || !groups[selectedIndex]?.words?.length"
+        @click="$emit('start')"
+      >
+        Start quiz
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline"
+        :disabled="groups.length === 0 || !groups[selectedIndex]?.words?.length"
+        @click="$emit('study')"
+      >
+        Study list
+      </button>
+    </div>
 
     <div class="w-full border-t border-base-300 pt-6 mt-2 flex flex-col items-center gap-3">
       <p class="m-0 text-sm font-medium text-base-content/80">Mega (up to 10 random words)</p>
