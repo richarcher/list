@@ -1,9 +1,12 @@
 <script setup>
+import ScoreHistory from './ScoreHistory.vue'
+
 defineProps({
   groups: { type: Array, required: true },
   selectedIndex: { type: Number, default: 0 },
   megaEnAvailable: { type: Boolean, default: false },
   megaAfAvailable: { type: Boolean, default: false },
+  history: { type: Array, default: () => [] },
 })
 defineEmits(['select', 'start', 'study', 'mega-start'])
 </script>
@@ -47,6 +50,8 @@ defineEmits(['select', 'start', 'study', 'mega-start'])
         Study list
       </button>
     </div>
+
+    <ScoreHistory :history="history" />
 
     <div class="w-full border-t border-base-300 pt-6 mt-2 flex flex-col items-center gap-3">
       <p class="m-0 text-sm font-medium text-base-content/80">Mega (up to 10 random words)</p>

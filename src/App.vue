@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { useWordlists } from './composables/useWordlists'
 import { useQuiz, countMegaPoolWords } from './composables/useQuiz'
+import { useScoreboard } from './composables/useScoreboard'
 import { useOnline } from './composables/useOnline'
 import ListPicker from './components/ListPicker.vue'
 import StudyList from './components/StudyList.vue'
@@ -21,6 +22,7 @@ const { groups, selectedIndex, selectedGroup, selectedLang, loadWordlists, selec
   useWordlists()
 const { quizWords, currentWordIndex, currentEntry, currentWord, results, wrongWords, startQuiz, startMegaQuiz, onCheck, onNext, onSkip } =
   useQuiz(selectedGroup, groups)
+const { history: listHistory, recordAttempt } = useScoreboard(selectedGroup)
 
 const { isOnline } = useOnline()
 
@@ -77,26 +79,24 @@ const megaResultsLabel = computed(() => {
   return null
 })
 
-function handleNext(payload) {
-  const finished = onNext()
-  if (finished) {
-    megaElapsedMs.value =
-      payload && typeof payload === 'object' && 'megaElapsedMs' in payload
-        ? payload.megaElapsedMs
-        : null
-    screen.value = 'results'
+function finishIfDone(finished, payload) {
+  if (!finished) return
+  megaElapsedMs.value =
+    payload && typeof payload === 'object' && 'megaElapsedMs' in payload
+      ? payload.megaElapsedMs
+      : null
+  if (!megaLang.value) {
+    recordAttempt(selectedGroup.value, results.value.filter((r) => r.correct).length, results.value.length)
   }
+  screen.value = 'results'
+}
+
+function handleNext(payload) {
+  finishIfDone(onNext(), payload)
 }
 
 function handleSkip(payload) {
-  const finished = onSkip()
-  if (finished) {
-    megaElapsedMs.value =
-      payload && typeof payload === 'object' && 'megaElapsedMs' in payload
-        ? payload.megaElapsedMs
-        : null
-    screen.value = 'results'
-  }
+  finishIfDone(onSkip(), payload)
 }
 
 function studyAndNavigate() {
@@ -182,6 +182,7 @@ onUnmounted(() => {
         :selected-index="selectedIndex"
         :mega-en-available="megaEnAvailable"
         :mega-af-available="megaAfAvailable"
+        :history="listHistory"
         @select="selectList($event)"
         @start="startAndNavigate"
         @study="studyAndNavigate"
@@ -212,6 +213,7 @@ onUnmounted(() => {
         :wrong-words="wrongWords"
         :mega-elapsed-ms="megaElapsedMs"
         :mega-label="megaResultsLabel"
+        :history="megaResultsLabel ? [] : listHistory"
         @try-again="tryAgain"
         @pick-another-date="pickAnotherList"
       />
