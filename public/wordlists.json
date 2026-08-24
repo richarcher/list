@@ -504,5 +504,44 @@
       { "speak": "reason", "spell": "rede" },
       { "speak": "compare", "spell": "vergelyk" }
     ]
+  },
+  {
+    "date": "2026-08-24",
+    "title": "Term 3 List 6 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "unique", "spell": "unique" },
+      { "speak": "percussion", "spell": "percussion" },
+      { "speak": "volume", "spell": "volume" },
+      { "speak": "pitch", "spell": "pitch" },
+      { "speak": "consonant", "spell": "consonant" },
+      { "speak": "vowel", "spell": "vowel" },
+      { "speak": "alliteration", "spell": "alliteration" },
+      { "speak": "sewage", "spell": "sewage" },
+      { "speak": "purify", "spell": "purify" },
+      { "speak": "pesticide", "spell": "pesticide" },
+      { "speak": "cargo", "spell": "cargo" },
+      { "speak": "favourite", "spell": "favourite" },
+      { "speak": "special", "spell": "special" },
+      { "speak": "tomorrow", "spell": "tomorrow" },
+      { "speak": "neighbour", "spell": "neighbour" }
+    ]
+  },
+  {
+    "date": "2026-08-24",
+    "title": "Term 3 Lys 6 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "plot", "spell": "plot" },
+      { "speak": "characteristics", "spell": "eienskappe" },
+      { "speak": "values / morals", "spell": "waardes" },
+      { "speak": "climax", "spell": "klimaks" },
+      { "speak": "applicable", "spell": "toeplaslik" },
+      { "speak": "self image", "spell": "selfbeeld" },
+      { "speak": "proofread / edit", "spell": "proeflees" },
+      { "speak": "information", "spell": "inligting" },
+      { "speak": "improve", "spell": "verbeter" },
+      { "speak": "illustrate", "spell": "illustreer" }
+    ]
   }
 ]
