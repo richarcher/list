@@ -543,5 +543,44 @@
       { "speak": "improve", "spell": "verbeter" },
       { "speak": "illustrate", "spell": "illustreer" }
     ]
+  },
+  {
+    "date": "2026-08-31",
+    "title": "Term 3 List 7 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "excellent", "spell": "excellent" },
+      { "speak": "excited", "spell": "excited" },
+      { "speak": "yesterday", "spell": "yesterday" },
+      { "speak": "rhythm", "spell": "rhythm" },
+      { "speak": "rhyme", "spell": "rhyme" },
+      { "speak": "poultry", "spell": "poultry" },
+      { "speak": "unprocessed", "spell": "unprocessed" },
+      { "speak": "similar", "spell": "similar" },
+      { "speak": "storage", "spell": "storage" },
+      { "speak": "canal", "spell": "canal" },
+      { "speak": "sometimes", "spell": "sometimes" },
+      { "speak": "sincerely", "spell": "sincerely" },
+      { "speak": "a lot", "spell": "a lot" },
+      { "speak": "restaurant", "spell": "restaurant" },
+      { "speak": "opposite", "spell": "opposite" }
+    ]
+  },
+  {
+    "date": "2026-08-31",
+    "title": "Term 3 Lys 7 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "poem", "spell": "gedig" },
+      { "speak": "speaker", "spell": "spreker" },
+      { "speak": "sound / noise", "spell": "geluid" },
+      { "speak": "sound", "spell": "klank" },
+      { "speak": "bite", "spell": "byt" },
+      { "speak": "mood", "spell": "bui" },
+      { "speak": "attitude", "spell": "houding" },
+      { "speak": "confused / untidy", "spell": "deurmekaar" },
+      { "speak": "whisper", "spell": "fluister" },
+      { "speak": "swing", "spell": "swaai" }
+    ]
   }
 ]
