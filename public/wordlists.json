@@ -582,5 +582,44 @@
       { "speak": "whisper", "spell": "fluister" },
       { "speak": "swing", "spell": "swaai" }
     ]
+  },
+  {
+    "date": "2026-09-07",
+    "title": "Term 3 List 8 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "aeroplane", "spell": "aeroplane" },
+      { "speak": "courage", "spell": "courage" },
+      { "speak": "right", "spell": "right" },
+      { "speak": "responsibility", "spell": "responsibility" },
+      { "speak": "nationality", "spell": "nationality" },
+      { "speak": "ignore", "spell": "ignore" },
+      { "speak": "project", "spell": "project" },
+      { "speak": "anxiety", "spell": "anxiety" },
+      { "speak": "nervous", "spell": "nervous" },
+      { "speak": "possible", "spell": "possible" },
+      { "speak": "people", "spell": "people" },
+      { "speak": "quiet", "spell": "quiet" },
+      { "speak": "probably", "spell": "probably" },
+      { "speak": "apologise", "spell": "apologise" },
+      { "speak": "mountain", "spell": "mountain" }
+    ]
+  },
+  {
+    "date": "2026-09-07",
+    "title": "Term 3 Lys 8 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "poisonous", "spell": "giftige" },
+      { "speak": "dull", "spell": "vaal" },
+      { "speak": "sow", "spell": "saai" },
+      { "speak": "all day", "spell": "heeldag" },
+      { "speak": "awake", "spell": "wakker" },
+      { "speak": "passage", "spell": "gang" },
+      { "speak": "shift / move", "spell": "skuif" },
+      { "speak": "between", "spell": "tussen" },
+      { "speak": "early", "spell": "vroeg" },
+      { "speak": "usually", "spell": "gewoonlik" }
+    ]
   }
 ]
