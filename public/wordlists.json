@@ -621,5 +621,43 @@
       { "speak": "early", "spell": "vroeg" },
       { "speak": "usually", "spell": "gewoonlik" }
     ]
+  },
+  {
+    "date": "2026-09-14",
+    "title": "Term 3 List 9 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "piece", "spell": "piece" },
+      { "speak": "height", "spell": "height" },
+      { "speak": "texture", "spell": "texture" },
+      { "speak": "contrast", "spell": "contrast" },
+      { "speak": "compare", "spell": "compare" },
+      { "speak": "demonstrate", "spell": "demonstrate" },
+      { "speak": "instrument", "spell": "instrument" },
+      { "speak": "improvise", "spell": "improvise" },
+      { "speak": "breathe", "spell": "breathe" },
+      { "speak": "interesting", "spell": "interesting" },
+      { "speak": "really", "spell": "really" },
+      { "speak": "would", "spell": "would" },
+      { "speak": "until", "spell": "until" },
+      { "speak": "always", "spell": "always" },
+      { "speak": "except", "spell": "except" }
+    ]
+  },
+  {
+    "date": "2026-09-14",
+    "title": "Term 3 Lys 9 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "warm", "spell": "warm" },
+      { "speak": "round", "spell": "rond" },
+      { "speak": "fire", "spell": "vuur" },
+      { "speak": "flavour", "spell": "geur" },
+      { "speak": "butter", "spell": "botter" },
+      { "speak": "jam", "spell": "konfyt" },
+      { "speak": "together", "spell": "saam" },
+      { "speak": "happy", "spell": "bly" },
+      { "speak": "taste", "spell": "smaak" }
+    ]
   }
 ]
