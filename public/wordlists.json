@@ -659,5 +659,44 @@
       { "speak": "happy", "spell": "bly" },
       { "speak": "taste", "spell": "smaak" }
     ]
+  },
+  {
+    "date": "2026-10-06",
+    "title": "Term 4 List 1 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "pedestrian", "spell": "pedestrian" },
+      { "speak": "rotate", "spell": "rotate" },
+      { "speak": "atmosphere", "spell": "atmosphere" },
+      { "speak": "planets", "spell": "planets" },
+      { "speak": "factories", "spell": "factories" },
+      { "speak": "electricity", "spell": "electricity" },
+      { "speak": "mining", "spell": "mining" },
+      { "speak": "recreation", "spell": "recreation" },
+      { "speak": "fresh", "spell": "fresh" },
+      { "speak": "stories", "spell": "stories" },
+      { "speak": "saying", "spell": "saying" },
+      { "speak": "tired", "spell": "tired" },
+      { "speak": "weird", "spell": "weird" },
+      { "speak": "wonder", "spell": "wonder" },
+      { "speak": "clothing", "spell": "clothing" }
+    ]
+  },
+  {
+    "date": "2026-10-06",
+    "title": "Term 4 Lys 1 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "enemy", "spell": "vyand" },
+      { "speak": "horns", "spell": "horings" },
+      { "speak": "inside", "spell": "binne" },
+      { "speak": "outside", "spell": "buite" },
+      { "speak": "friendly", "spell": "vriendelik" },
+      { "speak": "unfriendly", "spell": "onvriendelik" },
+      { "speak": "return", "spell": "terugkeer" },
+      { "speak": "without", "spell": "sonder" },
+      { "speak": "everything", "spell": "alles" },
+      { "speak": "together", "spell": "saam" }
+    ]
   }
 ]
