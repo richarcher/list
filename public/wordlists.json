@@ -698,5 +698,44 @@
       { "speak": "everything", "spell": "alles" },
       { "speak": "together", "spell": "saam" }
     ]
+  },
+  {
+    "date": "2026-10-12",
+    "title": "Term 4 List 2 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "features", "spell": "features" },
+      { "speak": "continent", "spell": "continent" },
+      { "speak": "surface", "spell": "surface" },
+      { "speak": "islands", "spell": "islands" },
+      { "speak": "postal", "spell": "postal" },
+      { "speak": "system", "spell": "system" },
+      { "speak": "listen", "spell": "listen" },
+      { "speak": "speak", "spell": "speak" },
+      { "speak": "astronaut", "spell": "astronaut" },
+      { "speak": "Mercury", "spell": "Mercury" },
+      { "speak": "Earth", "spell": "Earth" },
+      { "speak": "Jupiter", "spell": "Jupiter" },
+      { "speak": "although", "spell": "although" },
+      { "speak": "taught", "spell": "taught" },
+      { "speak": "definitely", "spell": "definitely" }
+    ]
+  },
+  {
+    "date": "2026-10-12",
+    "title": "Term 4 Lys 2 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "alone", "spell": "alleen" },
+      { "speak": "friends", "spell": "maats" },
+      { "speak": "own", "spell": "eie" },
+      { "speak": "bunch", "spell": "klomp" },
+      { "speak": "party", "spell": "partytjie" },
+      { "speak": "welcome", "spell": "welkom" },
+      { "speak": "guilty", "spell": "skuldig" },
+      { "speak": "decide", "spell": "besluit" },
+      { "speak": "ugly", "spell": "lelik" },
+      { "speak": "suddenly", "spell": "skielik" }
+    ]
   }
 ]
