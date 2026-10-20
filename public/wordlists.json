@@ -737,5 +737,44 @@
       { "speak": "ugly", "spell": "lelik" },
       { "speak": "suddenly", "spell": "skielik" }
     ]
+  },
+  {
+    "date": "2026-10-19",
+    "title": "Term 4 List 3 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "orbit", "spell": "orbit" },
+      { "speak": "axis", "spell": "axis" },
+      { "speak": "revolution", "spell": "revolution" },
+      { "speak": "crater", "spell": "crater" },
+      { "speak": "river", "spell": "river" },
+      { "speak": "stream", "spell": "stream" },
+      { "speak": "communications", "spell": "communications" },
+      { "speak": "language", "spell": "language" },
+      { "speak": "painting", "spell": "painting" },
+      { "speak": "Venus", "spell": "Venus" },
+      { "speak": "Mars", "spell": "Mars" },
+      { "speak": "Uranus", "spell": "Uranus" },
+      { "speak": "embarrass", "spell": "embarrass" },
+      { "speak": "caught", "spell": "caught" },
+      { "speak": "bought", "spell": "bought" }
+    ]
+  },
+  {
+    "date": "2026-10-19",
+    "title": "Term 4 Lys 3 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "prepare", "spell": "berei" },
+      { "speak": "plant", "spell": "plant" },
+      { "speak": "water", "spell": "water" },
+      { "speak": "grow", "spell": "groei" },
+      { "speak": "pick", "spell": "pluk" },
+      { "speak": "leftovers", "spell": "oorblyfsels" },
+      { "speak": "sell", "spell": "verkoop" },
+      { "speak": "care for", "spell": "sorg" },
+      { "speak": "cook", "spell": "kook" },
+      { "speak": "ground", "spell": "grond" }
+    ]
   }
 ]
