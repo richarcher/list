@@ -1,6 +1,8 @@
 <script setup>
 defineProps({
-  disabled: { type: Boolean, default: false }
+  disabled: { type: Boolean, default: false },
+  /** Extra accented letters shown above the main rows (e.g. Afrikaans ë, ê). */
+  accents: { type: Array, default: () => [] }
 })
 
 const ROW1 = 'qwertyuiop'.split('')
@@ -12,6 +14,19 @@ const emit = defineEmits(['key'])
 
 <template>
   <div class="w-full max-w-[28rem] mx-auto py-2 flex flex-col gap-1.5 [touch-action:manipulation]" role="group" aria-label="Keyboard">
+    <div v-if="accents.length" class="flex justify-center gap-0.5 sm:gap-1 flex-nowrap mb-1">
+      <button
+        v-for="char in accents"
+        :key="char"
+        type="button"
+        class="btn btn-sm btn-accent btn-outline min-w-6 sm:min-w-7 min-h-11 flex-1 max-w-10 text-sm sm:text-base select-none"
+        :aria-label="char"
+        :disabled="disabled"
+        @click="emit('key', char)"
+      >
+        {{ char }}
+      </button>
+    </div>
     <div class="flex justify-center gap-0.5 sm:gap-1 flex-nowrap">
       <button
         v-for="char in ROW1"

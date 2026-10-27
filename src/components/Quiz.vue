@@ -22,6 +22,15 @@ const showFeedback = ref(false)
 
 const expectedWord = computed(() => props.word)
 
+/** Afrikaans letters with a deelteken, kappie or akuut/gravis accent. */
+const AF_ACCENTS = ['ë', 'ê', 'é', 'è', 'ï', 'î', 'ô', 'û']
+const accentKeys = computed(() => (props.lang === 'af' ? AF_ACCENTS : []))
+
+/** NFC so a composed "ë" matches one typed as "e" + combining diaeresis. */
+function normalizeSpelling(s) {
+  return s.normalize('NFC').toLowerCase()
+}
+
 const megaTitle = computed(() => (props.lang === 'af' ? 'Mega-toets' : 'Mega-test'))
 
 const elapsedMs = ref(0)
@@ -80,9 +89,8 @@ watch(
 
 function submit() {
   const raw = input.value.trim()
-  const normalized = raw.toLowerCase()
   const expected = props.word
-  const correct = expected.toLowerCase() === normalized
+  const correct = normalizeSpelling(expected) === normalizeSpelling(raw)
   feedback.value = correct ? 'correct' : 'incorrect'
   showFeedback.value = true
   if (correct) {
@@ -127,9 +135,10 @@ function onKeydown(e) {
     input.value = input.value.slice(0, -1)
     return
   }
-  if (e.key.length === 1 && /[a-z \-]/i.test(e.key)) {
+  const key = e.key.normalize('NFC')
+  if (key.length === 1 && (/[a-z \-]/i.test(key) || accentKeys.value.includes(key.toLowerCase()))) {
     e.preventDefault()
-    if (!showFeedback.value) input.value += e.key.toLowerCase()
+    if (!showFeedback.value) input.value += key.toLowerCase()
   }
 }
 
@@ -206,7 +215,7 @@ function onSoftKey(key) {
         aria-label="Your spelling (use the keyboard below)"
         @keydown="onKeydown"
       />
-      <SoftKeyboard :disabled="showFeedback" @key="onSoftKey" />
+      <SoftKeyboard :disabled="showFeedback" :accents="accentKeys" @key="onSoftKey" />
       <div class="flex gap-2 justify-end">
         <button type="button" class="btn btn-neutral btn-sm" @click="skip" :disabled="showFeedback">
           Skip
