@@ -776,5 +776,44 @@
       { "speak": "cook", "spell": "kook" },
       { "speak": "ground", "spell": "grond" }
     ]
+  },
+  {
+    "date": "2026-10-26",
+    "title": "Term 4 List 4 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "wetland", "spell": "wetland" },
+      { "speak": "groundwater", "spell": "groundwater" },
+      { "speak": "storage", "spell": "storage" },
+      { "speak": "camera", "spell": "camera" },
+      { "speak": "postage", "spell": "postage" },
+      { "speak": "telegraph", "spell": "telegraph" },
+      { "speak": "telephone", "spell": "telephone" },
+      { "speak": "radio", "spell": "radio" },
+      { "speak": "mobile", "spell": "mobile" },
+      { "speak": "Saturn", "spell": "Saturn" },
+      { "speak": "Neptune", "spell": "Neptune" },
+      { "speak": "solar", "spell": "solar" },
+      { "speak": "accept", "spell": "accept" },
+      { "speak": "except", "spell": "except" },
+      { "speak": "should", "spell": "should" }
+    ]
+  },
+  {
+    "date": "2026-10-26",
+    "title": "Term 4 Lys 4 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "bird", "spell": "voël" },
+      { "speak": "goldfish", "spell": "goudvis" },
+      { "speak": "guinea pig", "spell": "marmotjie" },
+      { "speak": "hamster", "spell": "hamster" },
+      { "speak": "horse", "spell": "perd" },
+      { "speak": "monkey", "spell": "aap" },
+      { "speak": "parrot", "spell": "papegaai" },
+      { "speak": "rabbit", "spell": "haas" },
+      { "speak": "silkworm", "spell": "sywurm" },
+      { "speak": "tortoise", "spell": "skilpad" }
+    ]
   }
 ]
