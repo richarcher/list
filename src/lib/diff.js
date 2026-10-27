@@ -4,8 +4,8 @@
  * "same" = matching; "add" = in correct but not user (missing); "remove" = in user but not correct (extra).
  */
 export function characterDiff(correct, user) {
-  const c = String(correct).toLowerCase()
-  const u = String(user ?? '').toLowerCase()
+  const c = String(correct).normalize('NFC').toLowerCase()
+  const u = String(user ?? '').normalize('NFC').toLowerCase()
   const clen = c.length
   const ulen = u.length
   const maxLen = Math.max(clen, ulen)
