@@ -815,5 +815,83 @@
       { "speak": "silkworm", "spell": "sywurm" },
       { "speak": "tortoise", "spell": "skilpad" }
     ]
+  },
+  {
+    "date": "2026-11-02",
+    "title": "Term 4 List 5 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "borehole", "spell": "borehole" },
+      { "speak": "container", "spell": "container" },
+      { "speak": "purification", "spell": "purification" },
+      { "speak": "pollution", "spell": "pollution" },
+      { "speak": "sewage", "spell": "sewage" },
+      { "speak": "cycle", "spell": "cycle" },
+      { "speak": "rocket", "spell": "rocket" },
+      { "speak": "wireless", "spell": "wireless" },
+      { "speak": "typewriter", "spell": "typewriter" },
+      { "speak": "modern", "spell": "modern" },
+      { "speak": "keyboard", "spell": "keyboard" },
+      { "speak": "Morse", "spell": "Morse" },
+      { "speak": "receive", "spell": "receive" },
+      { "speak": "technology", "spell": "technology" },
+      { "speak": "digital", "spell": "digital" }
+    ]
+  },
+  {
+    "date": "2026-11-02",
+    "title": "Term 4 Lys 5 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "pet", "spell": "troeteldier" },
+      { "speak": "fur", "spell": "pels" },
+      { "speak": "excited", "spell": "opgewonde" },
+      { "speak": "care for", "spell": "versorg" },
+      { "speak": "responsibility", "spell": "verantwoordelikheid" },
+      { "speak": "safe", "spell": "vellig" },
+      { "speak": "healthy", "spell": "gesond" },
+      { "speak": "cage", "spell": "hok" },
+      { "speak": "basket", "spell": "mandjie" },
+      { "speak": "energy", "spell": "energie" }
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "title": "Term 4 List 6 (English)",
+    "lang": "en",
+    "words": [
+      { "speak": "information", "spell": "information" },
+      { "speak": "university", "spell": "university" },
+      { "speak": "appreciate", "spell": "appreciate" },
+      { "speak": "argument", "spell": "argument" },
+      { "speak": "doubt", "spell": "doubt" },
+      { "speak": "different", "spell": "different" },
+      { "speak": "difficult", "spell": "difficult" },
+      { "speak": "library", "spell": "library" },
+      { "speak": "schedule", "spell": "schedule" },
+      { "speak": "scissors", "spell": "scissors" },
+      { "speak": "favourite", "spell": "favourite" },
+      { "speak": "finally", "spell": "finally" },
+      { "speak": "believe", "spell": "believe" },
+      { "speak": "interesting", "spell": "interesting" },
+      { "speak": "really", "spell": "really" }
+    ]
+  },
+  {
+    "date": "2026-11-09",
+    "title": "Term 4 Lys 6 (Afrikaans)",
+    "lang": "af",
+    "words": [
+      { "speak": "past", "spell": "verlede" },
+      { "speak": "future", "spell": "toekomende" },
+      { "speak": "present", "spell": "teenwoordige" },
+      { "speak": "pronouns", "spell": "voornaamwoorde" },
+      { "speak": "diminutives", "spell": "verkleinwoorde" },
+      { "speak": "adjectives", "spell": "byvoeglike naamwoorde" },
+      { "speak": "punctuation", "spell": "leestekens" },
+      { "speak": "capital letters", "spell": "hoofletters" },
+      { "speak": "summary", "spell": "opsomming" },
+      { "speak": "answer", "spell": "beantwoord" }
+    ]
   }
 ]
